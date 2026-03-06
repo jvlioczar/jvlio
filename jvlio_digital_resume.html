@@ -285,6 +285,24 @@ header {
   color: var(--on-surface-var); letter-spacing: .01em; margin-bottom: 18px;
 }
 
+.hero-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.hero-photo {
+  width: 130px;
+  height: 179px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+  flex-shrink: 0;
+  box-shadow: var(--sh3);
+}
+
+.hero-text { flex: 1; min-width: 0; }
+
 .hero-bio { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: .9rem; line-height: 1.75; color: var(--on-surface-var); max-width: 640px; }
 
 /* bio expand with mask-image fade — no solid bg colour */
@@ -770,6 +788,8 @@ header {
   .logo-sub { display:none; }
   .hero { padding:24px 16px 48px; }
   .hero-name { font-size:clamp(1.9rem,8vw,2.6rem); white-space:normal; word-break:break-word; }
+  .hero-identity { gap:16px; }
+  .hero-photo { width:90px; height:124px; border-radius:10px; }
   .section-nav-wrapper { display:none; }
   .filter-strip { padding:10px 16px; }
   .main { padding:20px 16px 110px; }
@@ -825,6 +845,9 @@ header {
         <span class="hero-journey-item journey-reveal" style="--ji:6">🇦🇺 Brisbane, QLD <span class="hero-journey-date">2025–</span></span>
       </div>
 
+      <div class="hero-identity">
+        <img class="hero-photo" src="img/jvlio_photo.png" alt="Julio Cesar Prado da Silva">
+        <div class="hero-text">
       <h1 class="hero-name"><em>J<span id="nm-u">u</span>lio</em> Cesar <span id="nm-last">Prado da Silva</span></h1>
       <div class="hero-rule"></div>
       <p class="hero-title" data-i18n="hero-professional">Graphic Designer · Social Media · Digital Curator · AI Student</p>
@@ -905,6 +928,8 @@ header {
           E-mail
         </a>
       </div>
+        </div><!-- /hero-text -->
+      </div><!-- /hero-identity -->
     </div>
 
     <div class="hero-stats">
