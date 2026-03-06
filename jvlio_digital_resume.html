@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Digital resume of Julio Cesar Prado da Silva — Graphic Designer, Social Media, Curator &amp; AI Student based in Brisbane, AU.">
+<meta name="theme-color" content="#FFFBFE">
+<title>Julio Cesar Prado da Silva — Digital Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────── TOKENS ─────────────────── */
+:root {
+  --bg:              #FFFBFE;
+  --surface:         #FFFFFF;
+  --surface-variant: #F4EFF4;
+  --surface-low:     #F7F2FA;
+  --on-surface:      #1C1B1F;
+  --on-surface-var:  #49454F;
+  --outline:         #CAC4D0;
+  --outline-variant: #E7E0EC;
+
+  /* 6 category accent colours (nav dots only) */
+  --des: #3ADE66;
+  --soc: #3AB1DE;
+  --ia:  #423ADE;
+  --man: #DE3ACA;
+  --cg:  #E03F30;
+  --eth: #9B3ADE;
+
+  /* Badge colours — Work=orange, Study=blue, Personal=purple */
+  --bw: #BF360C; --bw-bg: #FBE9E7;
+  --bs: #0D47A1; --bs-bg: #E3F2FD;
+  --bp: #6A1B9A; --bp-bg: #F3E5F5;
+  /* Location badges */
+  --loc-au: #F5C400; --loc-au-text: #3E2B00;
+  --loc-br: #1A6E24; --loc-br-text: #fff;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+
+  --sh1: 0 1px 2px rgba(0,0,0,.08);
+  --sh3: 0 2px 6px rgba(0,0,0,.09), 0 4px 18px rgba(0,0,0,.06);
+
+  --header-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--on-surface);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* ─────────────────── FULL-PAGE BLOBS ─────────────────── */
+/* Fixed behind everything — spans the whole site */
+.site-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .13;
+  animation: blobDrift 22s ease-in-out infinite alternate;
+}
+.blob-1 {
+  width: 600px; height: 480px;
+  background: radial-gradient(circle, #ede68a, #c9a93c);
+  top: -5%; left: -10%;
+  animation-duration: 26s;
+}
+.blob-2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, #f5b8b8, #d97070);
+  top: 25%; right: -8%;
+  animation-duration: 30s; animation-delay: -10s;
+}
+.blob-3 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, #a8edd6, #5ec9a0);
+  bottom: 15%; left: 38%;
+  animation-duration: 24s; animation-delay: -16s;
+}
+.blob-4 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, #c5d5f8, #7191e6);
+  bottom: 5%; left: 5%;
+  animation-duration: 28s; animation-delay: -6s;
+}
+.blob-5 {
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, #f9d4c5, #e8876a);
+  top: 60%; right: 10%;
+  animation-duration: 20s; animation-delay: -20s;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  35%  { transform: translate(30px,-22px) scale(1.05); }
+  65%  { transform: translate(-18px,14px) scale(.96); }
+  100% { transform: translate(14px,26px) scale(1.03); }
+}
+
+
+/* ── HERO BG WRAP ── */
+.hero-bg-wrap {
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* All page sections must sit above blobs */
+header, .hero, .section-nav-wrapper, .main, .site-footer, .bottom-nav {
+  position: relative; z-index: 1;
+}
+
+
+
+/* ── JOURNEY REVEAL ── */
+.journey-reveal {
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: journeyIn .4s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: calc(1.1s + var(--ji) * 0.1s);
+}
+@keyframes journeyIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ── EMPLOYMENT TYPE BADGE ── */
+.emp-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .58rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 4px;
+  border: 1px solid currentColor;
+  opacity: .65;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.emp-ft  { color: #1565C0; }
+.emp-pt  { color: #6A1B9A; }
+.emp-cas { color: #E65100; }
+
+/* ── NAME SCRAMBLE ── */
+#nm-u, #nm-last {
+  display: inline;
+  transition: color .1s;
+}
+#nm-u.glitching, #nm-last .glitch-char {
+  color: var(--des);
+}
+
+/* ─────────────────── CURSOR ─────────────────── */
+.cursor-dot {
+  position: fixed; width: 5px; height: 5px;
+  background: var(--on-surface); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+.cursor-ring {
+  position: fixed; width: 28px; height: 28px;
+  border: 1px solid rgba(28,27,31,.28); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width .32s cubic-bezier(.16,1,.3,1),
+              height .32s cubic-bezier(.16,1,.3,1),
+              border-color .2s;
+}
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring,
+body:has(.md-card:hover) .cursor-ring { width: 44px; height: 44px; border-color: var(--on-surface); }
+@media (hover:none) { .cursor-dot,.cursor-ring { display:none; } body { cursor:auto; } }
+
+/* ─────────────────── PROGRESS BAR ─────────────────── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 9000; width: 0;
+  background: linear-gradient(90deg,
+    var(--des), var(--soc), var(--ia), var(--man), var(--cg), var(--eth));
+  transition: width .1s; border-radius: 0 2px 2px 0;
+}
+
+/* ─────────────────── TOP APP BAR ─────────────────── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 400;
+  height: var(--header-h);
+  background: rgba(255,251,254,.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--outline-variant);
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 10px;
+}
+
+.logo {
+  display: flex; align-items: baseline; gap: 8px;
+}
+.logo-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--on-surface); letter-spacing: .01em;
+  white-space: nowrap; line-height: 1;
+}
+.logo-j { color: var(--des); font-style: italic; }
+.logo-v { color: var(--des); font-style: italic; }
+.logo-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .68rem; font-weight: 400; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--on-surface-var);
+}
+
+.header-spacer { flex: 1; }
+
+.lang-chip {
+  display: flex; align-items: center;
+  border: 1px solid var(--outline); border-radius: 999px;
+  overflow: hidden; height: 32px;
+}
+.lang-chip button {
+  border: none; background: transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .75rem; font-weight: 400; letter-spacing: .04em;
+  padding: 0 12px; height: 100%; color: var(--on-surface-var);
+  transition: background .15s, color .15s;
+}
+.lang-chip button.active { background: var(--on-surface); color: var(--surface); }
+.lang-chip-div { width: 1px; background: var(--outline); height: 18px; }
+
+/* ─────────────────── HERO ─────────────────── */
+.hero {
+  margin-top: var(--header-h);
+  padding: 36px 24px 48px;
+  max-width: 1120px; margin-left: auto; margin-right: auto;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px; align-items: start;
+}
+
+.hero-journey {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 4px 8px; margin-bottom: 16px;
+}
+.hero-journey-item { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .74rem; font-weight: 400; color: var(--on-surface-var); display: flex; align-items: center; gap: 5px; }
+.hero-journey-date { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .67rem; color: var(--outline); }
+.hero-journey-sep  { font-size: .6rem; color: var(--outline); }
+
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: .01em;
+  color: var(--on-surface); margin-bottom: 8px; white-space: nowrap;
+  opacity: 0; animation: fadeUpIn .8s .3s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-name em { font-style: italic; color: var(--des); }
+@keyframes fadeUpIn {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.hero-rule {
+  height: 1px; background: var(--outline-variant); width: 0; margin: 24px 0;
+  animation: expandRule .9s .9s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes expandRule { to { width: 100%; } }
+
+.hero-title {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.05rem; font-weight: 400;
+  color: var(--on-surface-var); letter-spacing: .01em; margin-bottom: 18px;
+}
+
+.hero-bio { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: .9rem; line-height: 1.75; color: var(--on-surface-var); max-width: 640px; }
+
+/* bio expand with mask-image fade — no solid bg colour */
+.hero-bio-full {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height .5s cubic-bezier(.16,1,.3,1), margin-top .3s,
+              -webkit-mask-position .4s, mask-position .4s;
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+/* peek: ~60px visible, mask fades bottom */
+.hero-bio-full.peek {
+  max-height: 64px;
+  margin-top: 12px;
+}
+/* open: full height, mask removed */
+.hero-bio-full.open {
+  max-height: 2400px;
+  margin-top: 12px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.hero-bio-full p { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: .88rem; line-height: 1.8; color: var(--on-surface-var); margin-bottom: 10px; }
+.hero-bio-full p:last-child { margin-bottom: 0; }
+
+.bio-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .78rem; font-weight: 700; color: var(--des);
+  padding: 10px 0; transition: opacity .2s;
+}
+.bio-btn:hover { opacity: .7; }
+.bio-btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid currentColor;
+  font-size: .82rem; line-height: 1;
+  flex-shrink: 0;
+  transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
+.bio-btn.open .bio-btn-icon { transform: rotate(45deg); }
+
+
+.hero-contacts {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 18px 0 0; border-top: 1px solid var(--outline-variant);
+}
+.contact-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 34px; padding: 0 14px 0 10px;
+  border: 1px solid var(--on-surface); border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .74rem; font-weight: 400; color: var(--on-surface);
+  text-decoration: none;
+  background: transparent;
+  transition: background .2s, color .2s;
+}
+.contact-chip:hover { background: var(--on-surface); color: var(--surface); }
+.contact-chip:hover svg { opacity: 1; }
+.contact-chip svg { width: 15px; height: 15px; flex-shrink: 0; opacity: .7; transition: opacity .2s; }
+
+/* Stats card */
+.hero-stats {
+  display: flex; flex-direction: column; gap: 12px;
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-lg); padding: 20px;
+  min-width: 178px; box-shadow: var(--sh1); margin-top: 0;
+}
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.8rem; font-weight: 700; line-height: 1; color: var(--on-surface);
+}
+.stat-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .68rem; font-weight: 400; color: var(--on-surface-var); letter-spacing: .06em; text-transform: uppercase; }
+.stat-divider { height: 1px; background: var(--outline-variant); }
+
+/* ─────────────────── SECTION NAV ─────────────────── */
+.section-nav-wrapper {
+  position: sticky; top: var(--header-h); z-index: 300;
+  background: rgba(255,251,254,.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--outline-variant);
+  margin-top: 0;
+}
+.section-nav {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; align-items: center; gap: 6px; padding: 10px 24px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.section-nav::-webkit-scrollbar { display: none; }
+.section-tab {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0 15px; height: 32px; border-radius: 999px;
+  border: 1.5px solid transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .82rem; font-weight: 600; letter-spacing: .01em;
+  color: var(--tab-c, var(--on-surface-var));
+  background: transparent;
+  transition: background .18s, color .18s, border-color .18s;
+  white-space: nowrap; flex-shrink: 0;
+  opacity: .55;
+}
+.section-tab[onclick*="sec-design"]  { --tab-c: #3ADE66; }
+.section-tab[onclick*="sec-social"]  { --tab-c: #3AB1DE; }
+.section-tab[onclick*="sec-ia"]      { --tab-c: #423ADE; }
+.section-tab[onclick*="sec-manual"]  { --tab-c: #DE3ACA; }
+.section-tab[onclick*="sec-cg"]      { --tab-c: #E03F30; }
+.section-tab[onclick*="sec-ethics"]  { --tab-c: #9B3ADE; }
+.section-tab:hover { opacity: .8; border-color: var(--tab-c); }
+.section-tab.active {
+  background: var(--tab-c);
+  color: #fff;
+  border-color: var(--tab-c);
+  opacity: 1;
+}
+.section-tab.active:hover { opacity: .88; }
+.tab-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--tab-c); transition: opacity .2s; }
+.section-tab.active .tab-dot { background: #fff !important; opacity: 1; }
+
+
+/* ── NAV INLINE LABELS ── */
+.nav-inline-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--on-surface-var); opacity: .45;
+  white-space: nowrap; flex-shrink: 0;
+  padding-right: 4px;
+}
+
+/* Filter strip */
+.filter-strip {
+  max-width: 1120px; margin: 0 auto;
+  padding: 10px 24px;
+  display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+}
+.filter-label {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--on-surface-var); margin-right: 3px;
+}
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 28px; padding: 0 13px; border-radius: 999px;
+  border: 1.5px solid var(--outline); background: transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .72rem; font-weight: 500; color: var(--on-surface-var);
+  transition: all .18s;
+}
+/* each chip — border + font in its own color, never filled */
+.filter-chip[data-filter="educacao"]     { --fc: var(--bs); }
+.filter-chip[data-filter="trabalho"]     { --fc: var(--bw); }
+.filter-chip[data-filter="voluntariado"] { --fc: var(--bp); }
+.filter-chip[data-filter="brasil"]       { --fc: var(--loc-br); }
+.filter-chip[data-filter="australia"]    { --fc: var(--loc-au); }
+.filter-chip {
+  border-color: var(--fc, var(--outline));
+  color: var(--fc, var(--on-surface-var));
+}
+.filter-chip.on {
+  border-color: var(--fc, var(--outline));
+  color: var(--fc, var(--on-surface-var));
+  background: transparent;
+  font-weight: 700;
+}
+.filter-chip.on::before { content: '✓ '; font-size: .6rem; }
+.filter-chip:not(.on) { opacity: .5; }
+.filter-sep { width: 1px; height: 20px; background: var(--outline-variant); margin: 0 3px; }
+
+/* ─────────────────── MAIN ─────────────────── */
+.main { max-width: 1120px; margin: 0 auto; padding: 40px 24px 16px; position: relative; z-index: 1; }
+
+/* ─────────────────── CATEGORY SECTION ─────────────────── */
+.category-section { margin-bottom: 24px; scroll-margin-top: 175px; border-radius: var(--r-lg); padding: 20px 18px 8px; }
+.cat-design  { background: linear-gradient(135deg, rgba(58,222,102,.18) 0%, rgba(58,222,102,.07) 60%, transparent 100%); }
+.cat-social  { background: linear-gradient(135deg, rgba(58,177,222,.18) 0%, rgba(58,177,222,.07) 60%, transparent 100%); }
+.cat-ia      { background: linear-gradient(135deg, rgba(66,58,222,.18) 0%, rgba(66,58,222,.07) 60%, transparent 100%); }
+.cat-manual  { background: linear-gradient(135deg, rgba(222,58,202,.18) 0%, rgba(222,58,202,.07) 60%, transparent 100%); }
+.cat-cg      { background: linear-gradient(135deg, rgba(224,63,48,.18) 0%, rgba(224,63,48,.07) 60%, transparent 100%); }
+.cat-ethics  { background: linear-gradient(135deg, rgba(155,58,222,.18) 0%, rgba(155,58,222,.07) 60%, transparent 100%); }
+
+.category-header {
+  display: flex; align-items: center; gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--outline-variant);
+}
+.category-accent { width: 4px; height: 26px; border-radius: 2px; flex-shrink: 0; }
+.cat-design  .category-accent { background: var(--des); }
+.cat-social  .category-accent { background: var(--soc); }
+.cat-ia      .category-accent { background: var(--ia); }
+.cat-manual  .category-accent { background: var(--man); }
+.cat-cg      .category-accent { background: var(--cg); }
+.cat-ethics  .category-accent { background: var(--eth); }
+
+.category-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; font-weight: 400; color: var(--on-surface-var); letter-spacing: .08em; opacity: .42; }
+.category-name {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 700; color: var(--on-surface); line-height: 1;
+}
+.category-tags { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; color: var(--on-surface-var); margin-left: auto; white-space: nowrap; }
+
+/* Category intro */
+.category-intro {
+  margin: 16px 0 22px;
+  padding: 15px 20px;
+  border-radius: var(--r-md);
+  border-left: 3px solid var(--outline);
+  font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400;
+  font-size: .88rem; line-height: 1.65; color: var(--on-surface-var);
+  background: rgba(255,255,255,.65);
+  backdrop-filter: blur(8px);
+}
+.cat-design  .category-intro { border-color: var(--des); }
+.cat-social  .category-intro { border-color: var(--soc); }
+.cat-ia      .category-intro { border-color: var(--ia); }
+.cat-manual  .category-intro { border-color: var(--man); }
+.cat-cg      .category-intro { border-color: var(--cg); }
+.cat-ethics  .category-intro { border-color: var(--eth); }
+.category-intro strong { font-weight: 700; font-style: italic; color: var(--on-surface); }
+
+/* Cards grid */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(295px, 1fr)); gap: 11px; }
+
+/* ─────────────────── MD3 CARD ─────────────────── */
+.md-card {
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-md);
+  padding: 18px 18px 14px;
+  cursor: pointer; position: relative; overflow: hidden;
+  will-change: transform;
+  transition: box-shadow .25s, border-color .25s, transform .4s cubic-bezier(.16,1,.3,1);
+  opacity: 0; animation: cardReveal .45s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes cardReveal {
+  from { opacity:0; transform:perspective(900px) translateY(12px); }
+  to   { opacity:1; transform:perspective(900px) translateY(0); }
+}
+/* shimmer */
+.md-card::before {
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.26) 0%, transparent 55%);
+  opacity:0; transition:opacity .3s; pointer-events:none; z-index:0;
+}
+.md-card:hover { box-shadow: var(--sh3); border-color: var(--outline); }
+.md-card:hover::before { opacity:1; }
+.md-card > * { position: relative; z-index: 1; }
+
+.card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:9px; }
+.card-badges { display:flex; flex-wrap:wrap; gap:4px; }
+
+.type-badge {
+  display:inline-flex; align-items:center;
+  height:20px; padding:0 9px; border-radius:999px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+}
+.type-badge.work     { background:var(--bw-bg); color:var(--bw); }
+.type-badge.study    { background:var(--bs-bg); color:var(--bs); }
+.type-badge.personal { background:var(--bp-bg); color:var(--bp); }
+
+.loc-badge {
+  display:inline-flex; align-items:center;
+  height:20px; padding:0 7px; border-radius:999px;
+  font-size:.62rem; background:var(--surface-low);
+  color:var(--on-surface-var); border:1px solid var(--outline-variant);
+}
+.md-card[data-location="australia"] .loc-badge {
+  background: var(--loc-au); color: var(--loc-au-text);
+  border-color: transparent; font-weight: 600;
+}
+.md-card[data-location="brasil"] .loc-badge {
+  background: var(--loc-br); color: var(--loc-br-text);
+  border-color: transparent;
+}
+.card-date { font-family: 'Plus Jakarta Sans', sans-serif; font-size:.7rem; font-weight:400; color:var(--on-surface-var); white-space:nowrap; flex-shrink:0; }
+.card-role {
+  font-family:'DM Serif Display', serif;
+  font-style: italic;
+  font-size:1.02rem; font-weight: 700; line-height:1.3;
+  color:var(--on-surface); margin-bottom:3px;
+}
+.card-org { font-family: 'Instrument Serif', serif; font-style: normal; text-transform: uppercase; letter-spacing: .08em; font-size:.76rem; font-weight: 400; color:var(--on-surface-var); margin-bottom:3px; }
+.card-url a { font-family: 'Plus Jakarta Sans', sans-serif; font-size:.7rem; font-weight:400; text-decoration:none; color:var(--cat-accent, var(--des)); transition:opacity .2s; }
+.cat-design  .card-url a { color: var(--des); }
+.cat-social  .card-url a { color: var(--soc); }
+.cat-ia      .card-url a { color: var(--ia); }
+.cat-manual  .card-url a { color: var(--man); }
+.cat-cg      .card-url a { color: var(--cg); }
+.cat-ethics  .card-url a { color: var(--eth); }
+.card-url a:hover { opacity:.65; text-decoration:underline; }
+.card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size:.72rem; line-height:1.6; color:var(--on-surface-var);
+  margin-top:11px; display:none;
+}
+.md-card.expanded .card-desc { display:block; }
+.card-expand-icon {
+  position:absolute; bottom:10px; right:13px;
+  font-size:.55rem; color:var(--outline);
+  transition:transform .3s cubic-bezier(.16,1,.3,1), color .2s;
+}
+.md-card.expanded .card-expand-icon { transform:rotate(180deg); color:var(--on-surface-var); }
+.md-card.filter-hidden { display:none !important; }
+
+/* ─────────────────── BOTTOM NAV ─────────────────── */
+.bottom-nav {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
+  background:rgba(255,251,254,.94); backdrop-filter:blur(14px);
+  border-top:1px solid var(--outline-variant); padding:6px 0 14px;
+}
+.bottom-nav-items { display:flex; justify-content:space-around; }
+.bottom-nav-btn {
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  border:none; background:none; cursor:pointer; padding:6px 8px; border-radius:var(--r-sm);
+}
+.bottom-nav-btn .nav-icon {
+  width:30px; height:20px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; transition:background .2s;
+}
+.bottom-nav-btn.active .nav-icon { background:var(--surface-variant); }
+.bottom-nav-btn span { font-family: 'Plus Jakarta Sans', sans-serif; font-size:.62rem; font-weight:400; letter-spacing:.03em; color:var(--on-surface-var); }
+.bottom-nav-btn.active span { color:var(--on-surface); }
+
+
+
+
+/* ─────────────────── SKILLS PANEL ─────────────────── */
+.skills-panel {
+  margin-top: 28px;
+  padding: 20px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(8px);
+  max-width: 640px;
+}
+.skills-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .skills-groups { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .skills-groups { grid-template-columns: 1fr; }
+}
+.skills-group-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .58rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--on-surface-var); opacity: .5;
+  margin-bottom: 12px;
+}
+.skill-row {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-bottom: 8px;
+}
+.skill-row:last-child { margin-bottom: 0; }
+.skill-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .7rem; font-weight: 400;
+  color: var(--on-surface-var);
+}
+.skill-bar-track {
+  height: 4px; border-radius: 2px;
+  background: var(--outline-variant);
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%; border-radius: 2px;
+  background: var(--des);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform .8s cubic-bezier(.16,1,.3,1);
+}
+.skills-panel.visible .skill-bar-fill {
+  transform: scaleX(1);
+}
+
+/* ─────────────────── FOOTER ─────────────────── */
+.site-footer {
+  max-width:1120px; margin:0 auto; padding:40px 24px 32px;
+  display:flex; flex-direction:column; align-items:center; gap:24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size:.78rem; color:var(--on-surface-var);
+  border-top:1px solid var(--outline-variant);
+  text-align:center;
+}
+.footer-thanks {
+  font-family:'Instrument Serif', serif;
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--on-surface);
+  opacity:.9;
+  margin:0;
+}
+.footer-contacts {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+}
+.footer-contact-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 14px; border-radius:999px;
+  border:1px solid var(--on-surface); color:var(--on-surface);
+  text-decoration:none; font-size:.72rem; font-weight:600;
+  letter-spacing:.03em; transition:background .2s, color .2s;
+  opacity:.75;
+}
+.footer-contact-chip:hover {
+  background:var(--on-surface); color:var(--surface); opacity:1;
+}
+.footer-contact-chip svg { width:13px; height:13px; flex-shrink:0; opacity:.85; }
+.footer-meta {
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  opacity:.38; font-size:.68rem;
+}
+
+
+/* ─────────────────── SCROLL-TO-TOP FAB ─────────────────── */
+.fab-top {
+  position: fixed;
+  bottom: 32px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--on-surface);
+  color: var(--surface);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; line-height: 1;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+  opacity: 0; pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .25s, transform .25s;
+  z-index: 999;
+}
+.fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.fab-top:hover { opacity: .8; }
+@media (max-width: 600px) { .fab-top { bottom: 80px; right: 16px; } }
+
+
+/* ─────────────────── REDUCED MOTION ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .blob { animation: none; }
+  .skill-bar-fill { transition: none; }
+}
+
+/* ─────────────────── SCROLLBAR ─────────────────── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-thumb { background:var(--outline); border-radius:3px; }
+::-webkit-scrollbar-track { background:transparent; }
+
+/* ─────────────────── RESPONSIVE ─────────────────── */
+@media (max-width:900px) {
+  .hero-layout { grid-template-columns:1fr; }
+  .hero-stats { flex-direction:row; flex-wrap:wrap; min-width:0; margin-top:20px; }
+  .stat-divider { width:1px; height:auto; }
+  .category-tags { display:none; }
+  .cards-grid { grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); }
+}
+@media (max-width:640px) {
+  body { cursor:auto; }
+  header { padding:0 16px; }
+  .logo-sub { display:none; }
+  .hero { padding:24px 16px 48px; }
+  .hero-name { font-size:clamp(1.9rem,8vw,2.6rem); white-space:normal; word-break:break-word; }
+  .section-nav-wrapper { display:none; }
+  .filter-strip { padding:10px 16px; }
+  .main { padding:20px 16px 110px; }
+  .cards-grid { grid-template-columns:1fr; }
+  .bottom-nav { display:block; }
+  .site-footer { padding:28px 16px 24px; gap:20px; }
+  .footer-contacts { gap:8px; }
+  .category-intro { font-size:.88rem; }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo">
+    <span class="logo-wordmark"><span class="logo-j">J</span>vlio</span>
+  </div>
+  <div class="header-spacer"></div>
+  <div class="lang-chip">
+    <button id="btnPT" onclick="setLang('pt')">PT</button>
+    <div class="lang-chip-div"></div>
+    <button class="active" id="btnEN" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<!-- ── HERO BG ── -->
+<div class="hero-bg-wrap">
+  <div class="site-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+  </div>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-layout">
+    <div>
+      <div class="hero-journey">
+        <span class="hero-journey-item journey-reveal" style="--ji:0">🇧🇷 Bambuí, MG <span class="hero-journey-date">1991</span></span>
+        <span class="hero-journey-sep journey-reveal" style="--ji:1">→</span>
+        <span class="hero-journey-item journey-reveal" style="--ji:2">🇧🇷 São Paulo, SP <span class="hero-journey-date">1991–2023</span></span>
+        <span class="hero-journey-sep journey-reveal" style="--ji:3">→</span>
+        <span class="hero-journey-item journey-reveal" style="--ji:4">🇧🇷 Bambuí, MG <span class="hero-journey-date">2023–2025</span></span>
+        <span class="hero-journey-sep journey-reveal" style="--ji:5">→</span>
+        <span class="hero-journey-item journey-reveal" style="--ji:6">🇦🇺 Brisbane, QLD <span class="hero-journey-date">2025–</span></span>
+      </div>
+
+      <h1 class="hero-name"><em>J<span id="nm-u">u</span>lio</em> Cesar <span id="nm-last">Prado da Silva</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-title" data-i18n="hero-professional">Graphic Designer · Social Media · Digital Curator · AI Student</p>
+
+      <div class="hero-bio">
+        <p data-i18n="hero-sub"><strong>Over a decade turning concepts into visual experiences. Six universes, one journey.</strong></p>
+        <div class="hero-bio-full peek" id="biofull">
+          <p data-i18n="bio-p1">Graphic designer and content creator with over a decade of experience in visual communication. Specialised in editorial design, social media and content production — having created and laid out over 2,000 magazine editions and played a central role in building the EdiCase Portal.</p>
+          <p data-i18n="bio-p2">Holds a degree in Graphic Design from UNIP, with InDesign expertise. Photoshop, Illustrator, WordPress, video editing and social media management are also part of the toolkit. Currently living in Brisbane, Australia — expanding horizons and English vocabulary in equal measure. Formally studying AI at Greystone College.</p>
+          <p data-i18n="bio-p3">Outside of work, he enjoys discussing ethics the way most people talk about sports. Also passionate about science communication, philosophy, existentialism, music, film, sports, games and humour.</p>
+        <div class="skills-panel" id="skillsPanel">
+                <div class="skills-groups">
+                  <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="sk-knowledge">Knowledge</div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-visual">Visual Perception</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-editorial">Editorial Design</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-gdesign">Graphic Design</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-creativity">Creativity</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-artdir2">Art Direction</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-branding">Branding</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-typo">Typography</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-english">English</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-blogging">Blogging</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-moralphil">Moral Philosophy</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-uxui">UX/UI</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:40%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-automation">Process Automation</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:40%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-music">Music</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:40%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-film">Film</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:30%"></div></div></div>
+                  </div>
+                  <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="sk-tools">Hard Skills &amp; Tools</div>
+                    <div class="skill-row"><span class="skill-name">InDesign</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-socialmedia">Social Media</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name">Photoshop</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-genai">Generative AI</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-wordpress">CMS WordPress</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-windows">Windows</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-macos">macOS</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-illustrator">Illustrator</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-gdrive">Google Drive</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-msoffice">Microsoft Office</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name">CapCut</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:50%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name">Premiere</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:40%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name">Canva</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:35%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name">HTML/CSS</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:35%"></div></div></div>
+                  </div>
+                  <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="sk-soft">Soft Skills</div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-profethics">Professional Ethics</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:100%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-teamwork">Teamwork</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-deadlines">Deadline Commitment</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-adaptability">Adaptability</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-detail">Attention to Detail</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-org">Organisation</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-problem">Problem-Solving</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                    <div class="skill-row"><span class="skill-name" data-i18n="sk-fastlearn">Fast Learning</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+      <button class="bio-btn" id="bioBtn" onclick="toggleBio()">
+        <span class="bio-btn-icon" id="bioBtnIcon">+</span><span id="bioBtnLabel" data-i18n="bio-open">Learn more</span>
+      </button>
+
+
+      <div class="hero-contacts">
+        <a class="contact-chip" href="https://behance.net/juliocesarprava" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.202.517 1.855 1.778 1.855.843 0 1.319-.503 1.49-1.02l2.488.194zM15.999 12.5c-.028-1.014-.525-1.772-1.669-1.772-.998 0-1.677.656-1.873 1.772h3.542zM8.516 11.59c.961-.363 1.484-1.029 1.484-2.002 0-1.813-1.35-2.784-3.444-2.784H0v10.392h6.854c2.21 0 3.761-1.015 3.761-3.124 0-1.28-.6-2.153-2.099-2.482zm-5.5-3.035h2.578c.898 0 1.44.385 1.44 1.17 0 .823-.578 1.2-1.44 1.2H3.016V8.555zm2.845 6.117H3.016v-2.61h2.912c.997 0 1.568.44 1.568 1.284 0 .895-.601 1.326-1.635 1.326z"/></svg>
+          Behance
+        </a>
+        <a class="contact-chip" href="https://linkedin.com/in/juliocesarprava" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="contact-chip" href="/cdn-cgi/l/email-protection#59332c353036193c34383035773a3634">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          E-mail
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">14+</span>
+        <span class="stat-label" data-i18n="stat-years">Years of exp.</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">3k+</span>
+        <span class="stat-label" data-i18n="stat-editions">Design projects</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label" data-i18n="stat-universes">Universes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">2</span>
+        <span class="stat-label" data-i18n="stat-countries">Countries</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div><!-- /hero-bg-wrap -->
+
+<!-- ── SECTION NAV ── -->
+<div class="section-nav-wrapper" id="sectionNav">
+  <nav class="section-nav" id="sectionNavInner" aria-label="Jump to category">
+    <span class="nav-inline-label" data-i18n="nav-categories">Categories</span>
+    <button class="section-tab active" onclick="scrollToSection('sec-design',this)">
+      <span class="tab-dot" style="background:var(--des)"></span><span data-i18n="tab1">Graphic Design</span>
+    </button>
+    <button class="section-tab" onclick="scrollToSection('sec-social',this)">
+      <span class="tab-dot" style="background:var(--soc)"></span><span data-i18n="tab2">Social Media</span>
+    </button>
+    <button class="section-tab" onclick="scrollToSection('sec-ia',this)">
+      <span class="tab-dot" style="background:var(--ia)"></span><span data-i18n="tab3">AI</span>
+    </button>
+    <button class="section-tab" onclick="scrollToSection('sec-manual',this)">
+      <span class="tab-dot" style="background:var(--man)"></span><span data-i18n="tab4">Manual Work</span>
+    </button>
+    <button class="section-tab" onclick="scrollToSection('sec-cg',this)">
+      <span class="tab-dot" style="background:var(--cg)"></span><span data-i18n="tab5">General Knowledge</span>
+    </button>
+    <button class="section-tab" onclick="scrollToSection('sec-ethics',this)">
+      <span class="tab-dot" style="background:var(--eth)"></span><span data-i18n="tab6">Ethics</span>
+    </button>
+  </nav>
+  <div class="filter-strip">
+    <span class="nav-inline-label" data-i18n="nav-filters">Filters</span>
+    <span class="filter-label" data-i18n="filter-label">Type</span>
+    <button class="filter-chip on" data-group="purpose" data-filter="educacao"     onclick="toggleChip(this)" data-i18n="f-edu">Education</button>
+    <button class="filter-chip on" data-group="purpose" data-filter="trabalho"     onclick="toggleChip(this)" data-i18n="f-work">Work</button>
+    <button class="filter-chip on" data-group="purpose" data-filter="voluntariado" onclick="toggleChip(this)" data-i18n="f-vol">Volunteering</button>
+    <div class="filter-sep"></div>
+    <span class="filter-label" data-i18n="filter-loc">Location</span>
+    <button class="filter-chip on" data-group="location" data-filter="brasil"     onclick="toggleChip(this)" data-i18n="f-brazil">🇧🇷 Brasil</button>
+    <button class="filter-chip on" data-group="location" data-filter="australia"  onclick="toggleChip(this)" data-i18n="f-australia">🇦🇺 Austrália</button>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<main class="main">
+
+  <!-- 01 · GRAPHIC DESIGN -->
+  <section class="category-section cat-design" id="sec-design">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">01</span>
+      <h2 class="category-name" data-i18n="h1">Graphic Design</h2>
+      <span class="category-tags" data-i18n="ctag1">Editorial · Identity · Typography · Print & Digital</span>
+    </div>
+    <p class="category-intro" data-i18n="intro1">Graphic design is not a job for Julio — it is the language he thinks in. Over a decade in editorial publishing, with <strong>2,000+ magazines produced</strong>, sharpened his eye for visual hierarchy, typography and composition. His strength lies at the intersection of technical rigour and aesthetic sensibility: he can both execute and direct. Advanced-level InDesign with a proven track record of impact — including growing a client's social media following by 1,000% in two months.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Aug/25 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-pt" data-i18n="emp-pt">Part-Time</span></div>
+        <div class="card-role" data-i18n="r-tutor">Graphic Design Tutor</div>
+        <div class="card-org" data-i18n="org-tutor">Tutor 1:1 — Ensino Independente</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.behance.net/juliocesarprava" target="_blank" rel="noopener noreferrer">behance.net ↗</a></div>
+        <div class="card-desc" data-i18n="d-tutor">One-on-one teaching of essential Adobe Creative Cloud tools and core design concepts. Project-driven practice in a student–teacher format.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Aug/19 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-brazuca">Fundador &amp; Editor</div>
+        <div class="card-org" data-i18n="org-brazuca">Brazuca Design</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://brazuca.design.blog" target="_blank" rel="noopener noreferrer">brazuca.design.blog ↗</a></div>
+        <div class="card-desc" data-i18n="d-brazuca">Personal design blog in Portuguese. References, concepts, trends and reflections on Brazilian and international visual culture.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">May/14 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-posteres">Fundador &amp; Curador</div>
+        <div class="card-org">Pôsteres</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://posteres.tumblr.com" target="_blank" rel="noopener noreferrer">posteres.tumblr.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-posteres">Personal archive of national and international gig poster references. A visual curation project feeding the creative repertoire for over a decade.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jun/14 → Jun/25</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-edicase">Graphic Designer Editorial</div>
+        <div class="card-org">EdiCase Gestão de Negócios</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.edicase.com.br" target="_blank" rel="noopener noreferrer">edicase.com.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-edicase">Art direction, layout, final approval and press-ready file delivery. Over 2,000 print and digital magazines produced across 11 years. The defining reference for volume and consistency in the career.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jul/20 → Jan/21</span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-davila">Social Media Designer</div>
+        <div class="card-org">Da Vila Empório</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://instagram.com/davilaemporio/" target="_blank" rel="noopener noreferrer">@davilaemporio ↗</a> · <a onclick="event.stopPropagation()" href="https://www.behance.net/gallery/108408733/Social-Media-Produtos-Naturais-e-Veganos" target="_blank" rel="noopener noreferrer">Behance ↗</a></div>
+        <div class="card-desc" data-i18n="d-davila">Visual content creation for social media — product photography layouts, promotional posts and branded assets for a gourmet food emporium in Morumbi, São Paulo. Focused on conveying the premium, artisanal character of the brand through consistent visual language across Instagram.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jul/20</span></div>
+        <div class="card-role" data-i18n="r-epub">Epub 3</div>
+        <div class="card-org">Dual Pixel</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://dualpixel.com.br/cursos-ebook-epub3.html" target="_blank" rel="noopener noreferrer">dualpixel.com.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-epub">Creating interactive Epub 3 publications using Adobe InDesign for layout and Sigil for proper file structuring, validation and export.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jul/18 → Aug/19</span><span class="emp-badge emp-pt" data-i18n="emp-pt">Part-Time</span></div>
+        <div class="card-role" data-i18n="r-costurinhas">Social Media Designer</div>
+        <div class="card-org">Tudo Para Costurinhas</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.instagram.com/tudoparacosturinhas/" target="_blank" rel="noopener noreferrer">@tudoparacosturinhas ↗</a> · <a onclick="event.stopPropagation()" href="https://www.behance.net/gallery/108413015/Social-Media-Costura-e-Artesanato" target="_blank" rel="noopener noreferrer">Behance ↗</a></div>
+        <div class="card-desc" data-i18n="d-costurinhas">Development of institutional materials for print and digital. Grew the client's social media following by 10,000 (1,000%) in 2 months — a direct result of consistent design paired with content strategy.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2018</span></div>
+        <div class="card-role" data-i18n="r-artdir">Art Direction</div>
+        <div class="card-org">Impacta</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.impacta.edu.br/" target="_blank" rel="noopener noreferrer">impacta.edu.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-artdir">Extracurricular course in art direction focused on concept and creative direction.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/18 → Aug/18</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-carol">Graphic Designer & Video Editor</div>
+        <div class="card-org" data-i18n="org-carol">Carol Viana Sewing Studio</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://instagram.com/carolviana" target="_blank" rel="noopener noreferrer">@carolviana ↗</a></div>
+        <div class="card-desc" data-i18n="d-carol">Image editing for e-commerce, institutional materials and YouTube videos for a Brazilian sewing influencer. Freelance work focused on cohesive visual identity.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Sep/17 → Oct/17</span></div>
+        <div class="card-role" data-i18n="r-digpub">Digital Publishing with InDesign</div>
+        <div class="card-org">eduK</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.eduk.com.br/" target="_blank" rel="noopener noreferrer">eduk.com.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-digpub">Production of interactive digital publications and eBooks with Adobe InDesign, including multimedia features and non-linear navigation.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jul/12 → Jun/14</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-viuk">Graphic Design Assistant</div>
+        <div class="card-org">Lojas Viuk's</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://instagram.com/lojas_viuks" target="_blank" rel="noopener noreferrer">@lojas_viuks ↗</a></div>
+        <div class="card-desc" data-i18n="d-viuk">Creation, execution and finishing of digital image editing for print and web publications. First formal job in the design field.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2011</span></div>
+        <div class="card-role" data-i18n="r-ind-cs5">InDesign CS5 — Module I</div>
+        <div class="card-org">Impacta</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.impacta.edu.br/" target="_blank" rel="noopener noreferrer">impacta.edu.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-ind-cs5">Technical training in InDesign CS5 with focus on professional editorial layout. The beginning of mastery over the tool most central to the career.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2009 → 2011</span></div>
+        <div class="card-role" data-i18n="r-unip">Bachelor of Graphic Design</div>
+        <div class="card-org">Universidade Paulista</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.unip.br/presencial/cursos/graduacao/design-grafico.aspx" target="_blank" rel="noopener noreferrer">unip.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-unip">Bachelor's degree in Graphic Design with emphasis on visual communication. The theoretical and practical foundation of the entire professional career.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+    
+  </section>
+
+  <!-- 02 · SOCIAL MEDIA -->
+  <section class="category-section cat-social" id="sec-social">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">02</span>
+      <h2 class="category-name" data-i18n="h2">Social Media & Content</h2>
+      <span class="category-tags" data-i18n="ctag2">Editorial · CMS · WordPress · Curation · Distribution</span>
+    </div>
+    <p class="category-intro" data-i18n="intro2">A natural editorial manager, Julio understands content as architecture: every piece has purpose, position and a relationship to the whole. He spent years organising and creating <strong>visual and written content</strong> — for companies, individuals and personal projects — operating across both visual execution and publishing strategy.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Feb/26 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-founder-curator">Founder, Curator & Designer</div>
+        <div class="card-org" data-i18n="org-design-lib">The Design Library — BiblioVerse</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://design.biblioverse.org" target="_blank" rel="noopener noreferrer">design.biblioverse.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-design-lib">Hand-curated selection of the best design resources: tools, typography, UI/UX, branding, motion and visual culture. A thematic vertical within the BiblioVerse ecosystem.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Sep/25 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-founder-curator">Founder, Curator & Designer</div>
+        <div class="card-org" data-i18n="org-biblioverse">BiblioVerse — Curation Hub</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://biblioverse.org" target="_blank" rel="noopener noreferrer">biblioverse.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-biblioverse">Multi-thematic editorial platform covering AI, Design, Social Media, Coding, Language, Games and Music. Editorial management, content production and distribution strategy — a project that synthesises design, curation and technology.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jun/14 → Jun/25</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-portal">Web Content Editor & Producer</div>
+        <div class="card-org">Portal EdiCase</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://portaledicase.com" target="_blank" rel="noopener noreferrer">portaledicase.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-portal">Editorial management and evergreen content production distributed to Brazil's largest media portals: UOL, iG, MSN, R7, Terra and others. Central role in building and consolidating EdiCase's digital channel.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2016 → 2024</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-superlistas">Editor</div>
+        <div class="card-org">As Super Listas</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://assuperlistas.com" target="_blank" rel="noopener noreferrer">assuperlistas.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-superlistas">A listicle blog covering art, design, pop culture, geek topics, education, photography, music, politics and much more. Over 4 million page views. Long-form structured content production.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2014 → 2018</span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-veganismos">Content Editor & Producer</div>
+        <div class="card-org">Revista Veganismos</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://pressreader.com/es/magazines/m/veganismos/issues" target="_blank" rel="noopener noreferrer">pressreader.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-veganismos">Digital magazine on veganism. Editorial management and content production for the Brazilian vegan audience over 4 years. One of the longest-running projects in the career.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">2017</span></div>
+        <div class="card-role" data-i18n="r-screen">Screenwriting Techniques & Production</div>
+        <div class="card-org" data-i18n="org-ung">UNG — Universidade de Guarulhos</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="http://ung.br" target="_blank" rel="noopener noreferrer">ung.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-screen">Screenwriting techniques for film: storyline, premise, outline and full short-film script. Skills applied in video and narrative content production.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+    
+  </section>
+
+  <!-- 03 · AI -->
+  <section class="category-section cat-ia" id="sec-ia">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">03</span>
+      <h2 class="category-name" data-i18n="h3">Artificial Intelligence</h2>
+      <span class="category-tags" data-i18n="ctag3">Generative AI · AI Direction · AI Curation</span>
+    </div>
+    <p class="category-intro" data-i18n="intro3">He came to AI through design — and stayed for the philosophy that comes with it. An <strong>early adopter of creative automation</strong>, he now formally studies artificial intelligence at Greystone College in Brisbane, applying generative tools in editorial and curation work. His edge is not merely technical: he thinks about AI as an ethical, economic and epistemological question — which takes him well beyond surface-level tool use.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Sep/25 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-founder-curator">Founder, Curator & Designer</div>
+        <div class="card-org" data-i18n="org-ai-lib">The AI Library — BiblioVerse</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://ai.biblioverse.org" target="_blank" rel="noopener noreferrer">ai.biblioverse.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-ai-lib">Hand-curated selection of the best AI tools, models, research and resources. From generative AI to algorithmic ethics — the essentials filtered with editorial rigour.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Jan/26 → Apr/27</span></div>
+        <div class="card-role" data-i18n="r-greystone">Diploma in Artificial Intelligence</div>
+        <div class="card-org">Greystone College</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.greystonecollege.com/programs/artificial-intelligence/" target="_blank" rel="noopener noreferrer">greystonecollege.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-greystone">Diploma focused on AI fundamentals and practical applications: machine learning, neural networks, AI ethics and integration in professional contexts. Formal training in progress.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Aug/25 → Nov/25</span></div>
+        <div class="card-role" data-i18n="r-ai-toolkit">AI Toolkit for News</div>
+        <div class="card-org">Google News Initiative</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://newsonair.withgoogle.com/events/toolkit-ia-news" target="_blank" rel="noopener noreferrer">newsonair.withgoogle.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-ai-toolkit">Eight-workshop online programme (8h total) by Google News Initiative, focused on the strategic use of AI tools to drive digital transformation and support the business of news organisations.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Aug/24</span></div>
+        <div class="card-role" data-i18n="r-aner-ai">Generative AI in Newsrooms</div>
+        <div class="card-org" data-i18n="org-aner">ANER — National Magazine Publishers Association</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.aner.org.br/" target="_blank" rel="noopener noreferrer">aner.org.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-aner-ai">Advanced techniques for using generative AI in newsrooms: text generation, image creation and applied editorial automation.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Apr/24 → Jun/24</span></div>
+        <div class="card-role" data-i18n="r-gni">Google News Initiative — UX & Digital Marketing</div>
+        <div class="card-org" data-i18n="org-gni-lab">Google / Fundamentals Lab Program</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://newsinitiative.withgoogle.com/" target="_blank" rel="noopener noreferrer">newsinitiative.withgoogle.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-gni">UX design and digital marketing programme for journalism and communication, using Google methodologies and tools.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">May/23</span></div>
+        <div class="card-role" data-i18n="r-ai-biz">AI Applied to Business</div>
+        <div class="card-org">Exame</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://exame.com/" target="_blank" rel="noopener noreferrer">exame.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-ai-biz">Introduction to AI and how it can be used to enhance business operations — applications, tools and strategic uses of artificial intelligence in organisations.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+    
+  </section>
+
+  <!-- 04 · MANUAL WORK -->
+  <section class="category-section cat-manual" id="sec-manual">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">04</span>
+      <h2 class="category-name" data-i18n="h4">Manual Work</h2>
+      <span class="category-tags" data-i18n="ctag4">Gastronomy · Agriculture · Retail · Logistics · Services</span>
+    </div>
+    <p class="category-intro" data-i18n="intro4">Before becoming a designer, he was a cashier, stocker, bartender, delivery rider, farmhand. A journey that built <strong>discipline, adaptability and respect for physical work</strong>. Every manual role was also a school of rhythm, presence and customer service. The Australian chapter added multicultural context: working in a kitchen, greenhouse and delivery run in a foreign city demands just as much as any creative challenge.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="trabalho" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Oct/25 → Jan/26</span><span class="emp-badge emp-pt" data-i18n="emp-pt">Part-Time</span></div>
+        <div class="card-role" data-i18n="r-greenedge">Dishwasher &amp; Kitchenhand</div>
+        <div class="card-org">The Green Edge</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://greenedgeonline.com.au" target="_blank" rel="noopener noreferrer">greenedgeonline.com.au ↗</a></div>
+        <div class="card-desc" data-i18n="d-greenedge">Kitchenhand in an Australian gastronomy setting, keeping the kitchen running at pace. First formal manual work experience in Australia.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Apr/25 → Aug/25</span><span class="emp-badge emp-pt" data-i18n="emp-pt">Part-Time</span></div>
+        <div class="card-role" data-i18n="r-pisces">Plant Picker &amp; Farmhand</div>
+        <div class="card-org">Pisces Group Australia</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://piscesgroupaustralia.com" target="_blank" rel="noopener noreferrer">piscesgroupaustralia.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-pisces">Planted, tended and harvested exotic, aquatic and conventional plants in greenhouses. Manual labour in an Australian agricultural setting.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Jul/25</span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-doordash">Delivery Rider</div>
+        <div class="card-org">DoorDash</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">doordash.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-doordash">Food delivery by bicycle in Brisbane. Urban routes with a focus on punctuality and customer service. High degree of autonomy and self-management.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Sep/24</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-pedacin">Bar Attendant</div>
+        <div class="card-org">Pedaçin da Serra</div>
+        <div class="card-desc" data-i18n="d-pedacin">Customer-facing role in a high-volume environment, direct sales and beverage service including draught beer operation.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jun/19</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-prado-coc">Bartender</div>
+        <div class="card-org">Prado Coquetelaria</div>
+        <div class="card-desc" data-i18n="d-prado-coc">Preparation and service of cocktails at private events. Ingredient management and workspace maintenance in a high-demand environment.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">May/15 → Nov/16</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-eco">Stocker, Cashier & Buyer</div>
+        <div class="card-org">Eco Hortifruti</div>
+        <div class="card-desc" data-i18n="d-eco">Fruit and vegetable stocker, cashier operator and responsible for purchasing produce at the market — including loading and unloading deliveries.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jan/11 → Jul/12</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-nec">Administrative Assistant</div>
+        <div class="card-org">NEC</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://nec.com" target="_blank" rel="noopener noreferrer">nec.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-nec">Stock control. Managing inbound and outbound electronic equipment. First formal employment contract.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Oct/10 → Dec/10</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-bandfm">Promotional Team</div>
+        <div class="card-org">Band FM</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://instagram.com/bandfm" target="_blank" rel="noopener noreferrer">@bandfm ↗</a></div>
+        <div class="card-desc" data-i18n="d-bandfm">Outdoor activations, events and commercial promotions. Public engagement, merchandise distribution and programme promotion.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Mar/10</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
+        <div class="card-role" data-i18n="r-lacta">Chocolate Salesperson</div>
+        <div class="card-org">Mondelēz International</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://mondelezinternational.com/brazil" target="_blank" rel="noopener noreferrer">mondelezinternational.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-lacta">Chocolate sales associate at a supermarket stand during the Easter promotion. Direct consumer service and point-of-sale management.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+  </section>
+
+  <!-- 05 · GENERAL KNOWLEDGE -->
+  <section class="category-section cat-cg" id="sec-cg">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">05</span>
+      <h2 class="category-name" data-i18n="h5">General Knowledge</h2>
+      <span class="category-tags" data-i18n="ctag5">Languages · Technology · Music · Core Education</span>
+    </div>
+    <p class="category-intro" data-i18n="intro5">A structural curious, Julio accumulates knowledge that doesn't fit a single specialty. <strong>He learns for pleasure and applies by instinct</strong>. His English — earned formally in Australia — went from Intermediate to Advanced 1 in under a year. Solid grounding in IT, practical coding skills, and a trajectory that has passed through music, film technique and a formal education that went a long way.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="educacao" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Oct/25 → Jan/26</span></div>
+        <div class="card-role" data-i18n="r-ilsc">General English — Advanced 1</div>
+        <div class="card-org">ILSC Education Group</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://ilsc.com/language-schools/programs/general-english" target="_blank" rel="noopener noreferrer">ilsc.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-ilsc">12-week intensive programme. Started at Intermediate 2 and finished at Advanced 1. Focus on fluency, advanced vocabulary and professional communication.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Mar/25 → Aug/25</span></div>
+        <div class="card-role" data-i18n="r-albright">General English — Upper Intermediate</div>
+        <div class="card-org" data-i18n="org-albright">Albright Institute of Business and Language</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://albrightinstitute.edu.au/general-english" target="_blank" rel="noopener noreferrer">albrightinstitute.edu.au ↗</a></div>
+        <div class="card-desc" data-i18n="d-albright">24 weeks of general English. Completed at Upper Intermediate–Advanced level. Foundation for the transition to the Australian job market.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/18 → Nov/20</span></div>
+        <div class="card-role" data-i18n="r-microcamp">Information Technology</div>
+        <div class="card-org">Microcamp</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.microcamp.com.br/" target="_blank" rel="noopener noreferrer">microcamp.com.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-microcamp">Technical training covering hardware and software fundamentals, Windows network configuration and installation, and general computing concepts.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/12 → Feb/14</span></div>
+        <div class="card-role" data-i18n="r-guitar">Guitar Lessons</div>
+        <div class="card-org">Original Master</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://x.com/originalmusica" target="_blank" rel="noopener noreferrer">@originalmusica ↗</a></div>
+        <div class="card-desc" data-i18n="d-guitar">Basic and intermediate technique, applied music theory and varied repertoire. Interest in music as a parallel language to design — both are systems of expression.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/06 → Nov/08</span></div>
+        <div class="card-role" data-i18n="r-highschool">Secondary School (High School)</div>
+        <div class="card-org">E.E. Antônio Inácio Maciel</div>
+        <div class="card-desc" data-i18n="d-highschool">Years 10, 11 and 12 of secondary school. Formative period in Bambuí, MG.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/02 → Nov/06</span></div>
+        <div class="card-role" data-i18n="r-primary2">Primary Education — Stage II</div>
+        <div class="card-org">E.M.E.F. Antônio Fenólio</div>
+        <div class="card-desc" data-i18n="d-primary2">Years 5 to 8 of primary school.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/99 → Nov/02</span></div>
+        <div class="card-role" data-i18n="r-primary1">Primary Education — Stage I</div>
+        <div class="card-org">E.M.E.F. Hugo Arduini</div>
+        <div class="card-desc" data-i18n="d-primary1">Years 2 to 4 of primary school.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/98 → Nov/99</span></div>
+        <div class="card-role" data-i18n="r-primary1">Primary Education — Stage I</div>
+        <div class="card-org">Colégio Dom Pedro</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.dompedro.g12.br/" target="_blank" rel="noopener noreferrer">dompedro.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-primary0">Year 1 of primary school.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Feb/96 → Nov/98</span></div>
+        <div class="card-role" data-i18n="r-kindy">Early Childhood Education</div>
+        <div class="card-org">Parque Carmelina</div>
+        <div class="card-desc" data-i18n="d-kindy">Kindergarten I and II.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+    
+    
+    
+  </section>
+
+  <!-- 06 · ETHICS -->
+  <section class="category-section cat-ethics" id="sec-ethics">
+    <div class="category-header">
+      <div class="category-accent"></div>
+      <span class="category-num">06</span>
+      <h2 class="category-name" data-i18n="h6">Ethics</h2>
+      <span class="category-tags" data-i18n="ctag6">Animal Ethics · Moral Philosophy · Activism · Outreach</span>
+    </div>
+    <p class="category-intro" data-i18n="intro6">Ethics is the silent axis of the entire journey. For over a decade, Julio has investigated moral philosophy with the rigour of a scholar and the urgency of someone who believes <strong>what we think about the world determines what we do in it</strong>. Specialised in animal ethics, he has worked as a street activist, podcaster, visual activism designer and extension student at three universities. His interest is not merely theoretical: it is applied, communicated and lived.</p>
+    <div class="cards-grid">
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Mar/19 → <span data-i18n="present">Present</span></span></span></div>
+        <div class="card-role" data-i18n="r-vegan-design">Activist Designer</div>
+        <div class="card-org">Designer Vegano</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://instagram.com/designervegano" target="_blank" rel="noopener noreferrer">@designervegano ↗</a></div>
+        <div class="card-desc" data-i18n="d-vegan-design">Graphic design as a tool for activism: creation of visual pieces for vegan outreach and causes related to animal ethics.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Aug/17 → <span data-i18n="present">Present</span></span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-vegpedia">Founder & Editor</div>
+        <div class="card-org">Vegpedia</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://vegpedia.com" target="_blank" rel="noopener noreferrer">vegpedia.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-vegpedia">Independent encyclopaedia of knowledge on animal issues in Portuguese: ethics, activism, philosophy and references. Info-activism as a tool for change.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Mar/24 → Jul/24</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-ethicast">Commentator</div>
+        <div class="card-org" data-i18n="org-ethicast">Ethicast — Animal Ethics Podcast</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.youtube.com/playlist?list=PLZ5980ZEg1TE0GKtAGwiWXANx94sx3_pb" target="_blank" rel="noopener noreferrer">YouTube → Playlist ↗</a></div>
+        <div class="card-desc" data-i18n="d-ethicast">20 episodes on animal ethics: sentience, speciesism, utilitarianism, animal rights and applied moral philosophy. Accessible yet rigorous philosophical outreach.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">May/24</span></div>
+        <div class="card-role" data-i18n="r-gfi">The Science of Alternative Proteins</div>
+        <div class="card-org" data-i18n="org-gfi">GFI — Good Food Institute</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://gfi.org.br/cursos/" target="_blank" rel="noopener noreferrer">gfi.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-gfi">Nutritional aspects, plant-based production, fermentation and the role of animal-free alternatives in global food sustainability.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Mar/24</span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-30posteres">Activist Designer</div>
+        <div class="card-org">30 Pôsteres Veganos</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.instagram.com/designervegano" target="_blank" rel="noopener noreferrer">@designervegano ↗</a></div>
+        <div class="card-desc" data-i18n="d-30posteres">Series of 30 posters on veganism and animal rights, combining graphic design with visual activism. Art with purpose.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Sep/23 → Dec/23</span></div>
+        <div class="card-role" data-i18n="r-animal-ethics">Risks of Future Suffering</div>
+        <div class="card-org">Animal Ethics</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.animal-ethics.org/" target="_blank" rel="noopener noreferrer">animal-ethics.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-animal-ethics">Course on risks of animal and human suffering in future scenarios, with a philosophical and ethical approach to large-scale suffering reduction.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Oct/22 → Nov/22</span></div>
+        <div class="card-role" data-i18n="r-ufmg">Moral Consideration of Animals</div>
+        <div class="card-org" data-i18n="org-ufmg">UFMG — Federal University of Minas Gerais</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.ufmg.br/" target="_blank" rel="noopener noreferrer">ufmg.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-ufmg">Extension course on the philosophical debate around the moral consideration of non-human animals: theoretical foundations, ethical schools and practical implications.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Sep/22</span></div>
+        <div class="card-role" data-i18n="r-ceva">Effective Vegan Advocacy</div>
+        <div class="card-org" data-i18n="org-ceva">Center for Effective Vegan Advocacy</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://veganadvocacy.org/eva/" target="_blank" rel="noopener noreferrer">veganadvocacy.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-ceva">Evidence-based advocacy techniques: empathetic communication, objection handling and compassion-driven persuasion strategies.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Jul/22 → Aug/22</span></div>
+        <div class="card-role" data-i18n="r-ufu">Ethical Theories & Non-Human Animals</div>
+        <div class="card-org" data-i18n="org-ufu">UFU — Federal University of Uberlândia</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://ufu.br/" target="_blank" rel="noopener noreferrer">ufu.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-ufu">Extension course exploring ethical theories: utilitarianism, animal rights, care ethics and moral philosophy applied to the animal question.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">May/17 → Jul/17</span></div>
+        <div class="card-role" data-i18n="r-activist">Activist</div>
+        <div class="card-org" data-i18n="org-av">Anonymous for the Voiceless</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://anonymousforthevoiceless.org/" target="_blank" rel="noopener noreferrer">anonymousforthevoiceless.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-av">Cube of Truth: display of real footage of animal exploitation in public spaces in São Paulo, with direct public engagement to spark dialogue about veganism.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="brasil" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Mar/15 → May/15</span></div>
+        <div class="card-role" data-i18n="r-av">Activist</div>
+        <div class="card-org">VEDDAS</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://veddas.org.br/" target="_blank" rel="noopener noreferrer">veddas.org.br ↗</a></div>
+        <div class="card-desc" data-i18n="d-veddas">Vegetarianismo Ético, Defesa dos Direitos Animais e Sociedade. Leafleting, public dialogue and video screenings in public spaces.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+    
+    
+    
+    
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Mobile category navigation">
+  <div class="bottom-nav-items">
+    <button class="bottom-nav-btn active" onclick="scrollToSection('sec-design',null);setActiveNav(this)"><div class="nav-icon">🎨</div><span data-i18n="bnav1">Design</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-social',null);setActiveNav(this)"><div class="nav-icon">📱</div><span data-i18n="bnav2">Social</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ia',null);setActiveNav(this)"><div class="nav-icon">🤖</div><span data-i18n="bnav3">IA</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-manual',null);setActiveNav(this)"><div class="nav-icon">🛠</div><span data-i18n="bnav4">Manual</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-cg',null);setActiveNav(this)"><div class="nav-icon">📚</div><span data-i18n="bnav5">Geral</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ethics',null);setActiveNav(this)"><div class="nav-icon">♥</div><span data-i18n="bnav6">Ética</span></button>
+  </div>
+</nav>
+
+<footer class="site-footer">
+
+  <p class="footer-thanks" data-i18n="footer-thanks">Thanks for stopping by.</p>
+
+  <div class="footer-contacts">
+    <a class="footer-contact-chip" href="https://behance.net/juliocesarprava" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.202.517 1.855 1.778 1.855.843 0 1.319-.503 1.49-1.02l2.488.194zM15.999 12.5c-.028-1.014-.525-1.772-1.669-1.772-.998 0-1.677.656-1.873 1.772h3.542zM8.516 11.59c.961-.363 1.484-1.029 1.484-2.002 0-1.813-1.35-2.784-3.444-2.784H0v10.392h6.854c2.21 0 3.761-1.015 3.761-3.124 0-1.28-.6-2.153-2.099-2.482zm-5.5-3.035h2.578c.898 0 1.44.385 1.44 1.17 0 .823-.578 1.2-1.44 1.2H3.016V8.555zm2.845 6.117H3.016v-2.61h2.912c.997 0 1.568.44 1.568 1.284 0 .895-.601 1.326-1.635 1.326z"/></svg>
+      Behance
+    </a>
+    <a class="footer-contact-chip" href="https://linkedin.com/in/juliocesarprava" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a class="footer-contact-chip" href="https://instagram.com/jvlioczar" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+    <a class="footer-contact-chip" href="/cdn-cgi/l/email-protection#1d77687174727e786e7c6f6d6f7c6b7c5d7a707c7471337e7270">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      E-mail
+    </a>
+  </div>
+
+  <div class="footer-meta">
+    <span>© 2026 Julio Cesar Prado da Silva — Digital Resume</span>
+  </div>
+
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── CURSOR ──
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+if (dot && ring) {
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx+'px'; dot.style.top = my+'px';
+  });
+  (function loop(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+}
+
+// ── CARD TILT ──
+document.querySelectorAll('.md-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const cx = (e.clientX-r.left)/r.width-.5;
+    const cy = (e.clientY-r.top)/r.height-.5;
+    card.style.transform = `perspective(900px) rotateY(${cx*5}deg) rotateX(${-cy*5}deg) translateZ(4px)`;
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(900px) rotateY(0) rotateX(0) translateZ(0)';
+  });
+});
+
+// ── STAGGER ──
+document.querySelectorAll('.md-card').forEach((c,i) => { c.style.animationDelay = (i%9*.04)+'s'; });
+
+// ── PROGRESS + ACTIVE TAB + FAB (single scroll listener) ──
+const _secIds = ['sec-design','sec-social','sec-ia','sec-manual','sec-cg','sec-ethics'];
+window.addEventListener('scroll', () => {
+  // progress bar
+  const scrollEl = document.getElementById('progressBar');
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  if (scrollEl) scrollEl.style.width = (pct * 100) + '%';
+  // active tab
+  const tabs = document.querySelectorAll('.section-tab');
+  if (!window._tabClickLock) {
+    let cur = 0;
+    _secIds.forEach((id, i) => { const s = document.getElementById(id); if (s && s.getBoundingClientRect().top <= 160) cur = i; });
+    tabs.forEach((t, i) => t.classList.toggle('active', i === cur));
+  }
+  // FAB
+  const fab = document.getElementById('fabTop');
+  if (fab) fab.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+// ── BIO ──
+function toggleBio() {
+  const full = document.getElementById('biofull');
+  if (!full) return;
+  const btn  = document.getElementById('bioBtn');
+  const lbl  = document.getElementById('bioBtnLabel');
+  const icon = document.getElementById('bioBtnIcon');
+  const isOpen = full.classList.contains('open');
+  if (isOpen) {
+    // collapse back to peek
+    full.classList.remove('open');
+    full.classList.add('peek');
+    btn.classList.remove('open');
+    icon.textContent = '+';
+    const t = translations[currentLang];
+    lbl.textContent = t['bio-open'] || 'Learn more';
+  } else {
+    // expand fully
+    full.classList.remove('peek');
+    full.classList.add('open');
+    btn.classList.add('open');
+    icon.textContent = '−';
+    setTimeout(animateSkills, 350);
+    const t = translations[currentLang];
+    lbl.textContent = t['bio-close'] || 'Learn less';
+  }
+}
+
+// ── FILTERS ──
+const activeFilters = { purpose: new Set(['educacao','trabalho','voluntariado']), location: new Set(['brasil','australia']) };
+function toggleChip(el) {
+  const { group, filter } = el.dataset;
+  const s = activeFilters[group];
+  s.has(filter) ? s.delete(filter) : s.add(filter);
+  el.classList.toggle('on', s.has(filter));
+  document.querySelectorAll('.md-card').forEach(c => {
+    const ps = (c.dataset.purpose||'').split(' ').filter(Boolean);
+    const ls = (c.dataset.location||'').split(' ').filter(Boolean);
+    c.classList.toggle('filter-hidden',
+      !(ps.some(p=>activeFilters.purpose.has(p)) && ls.some(l=>activeFilters.location.has(l))));
+  });
+}
+
+// ── NAV ──
+function scrollToSection(id, tabEl) {
+  document.getElementById(id)?.scrollIntoView({ behavior:'smooth', block:'start' });
+  if (tabEl) {
+    document.querySelectorAll('.section-tab').forEach(t=>t.classList.remove('active'));
+    tabEl.classList.add('active');
+    window._tabClickLock = true;
+    clearTimeout(window._tabClickTimer);
+    window._tabClickTimer = setTimeout(() => { window._tabClickLock = false; }, 900);
+  }
+}
+function setActiveNav(btn) { document.querySelectorAll('.bottom-nav-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+
+// ── LANGUAGE ──
+let currentLang = 'en';
+const translations = {
+  pt: {
+    'logo-sub':'Currículo Digital',
+    'hero-professional':'Designer Gráfico · Social Media · Curador Digital · Estudante de IA',
+    'hero-sub':'<strong>Mais de uma década transformando conceitos em experiências visuais. Seis universos, uma trajetória.</strong>',
+    'bio-open':'Saiba mais','bio-close':'Saiba menos',
+    'stat-years':'14+ anos de exp.','stat-editions':'Projetos de design','stat-universes':'Universos','stat-countries':'Países',
+    'filter-label':'Tipo','filter-loc':'Localização','nav-categories':'Categorias','nav-filters':'Filtros','f-edu':'Educação','f-work':'Trabalho','f-vol':'Voluntariado',
+    'tab1':'Design Gráfico','tab2':'Social Media','tab3':'IA','tab4':'Trabalhos Manuais','tab5':'Conhecimentos Gerais','tab6':'Ética',
+    'h1':'Design Gráfico','h2':'Social Media & Conteúdo','h3':'Inteligência Artificial','h4':'Trabalhos Manuais','h5':'Conhecimentos Gerais','h6':'Ética',
+    'bw':'Trabalho','bs':'Estudo','bp':'Social',
+    'r-edicase':'Graphic Designer Editorial','r-viuk':'Assistente de Design Gráfico','r-unip':'Bacharelado em Design Gráfico','r-tutor':'Professor Particular de Design Gráfico',
+    'intro1':'Design gráfico não é uma profissão para Julio — é a língua em que ele pensa. Mais de uma década no mercado editorial, com <strong>+2.000 revistas produzidas</strong>, forjou um olhar apurado para hierarquia visual, tipografia e composição. Seu ponto forte está na intersecção entre rigor técnico e sensibilidade estética: sabe tanto executar quanto dirigir.',
+    'intro2':'Gestor editorial por natureza, Julio entende conteúdo como arquitetura: cada peça tem propósito, posição e relação com o todo. Passou anos organizando e criando <strong>conteúdo visual e escrito</strong> — para empresas, pessoas e projetos pessoais — transitando entre execução visual e estratégia editorial.',
+    'intro3':'Chegou à IA pelo design — e ficou pela filosofia que vem junto. <strong>Curioso precoce sobre automação criativa</strong>, hoje estuda formalmente IA no Greystone College e aplica ferramentas generativas no trabalho editorial e de curadoria.',
+    'intro4':'Antes de ser designer, foi caixa, repositor, bartender, entregador, farmhand. Uma trajetória que moldou <strong>disciplina, adaptabilidade e respeito pelo trabalho físico</strong>. Cada experiência manual foi também uma escola de ritmo, presença e serviço.',
+    'intro5':'Curioso estrutural, Julio acumula saberes que não cabem numa única especialidade. <strong>Aprende por prazer e aplica por instinto</strong>. Seu inglês avançou de Intermediate a Advanced 1 em menos de um ano — reflexo de imersão real e disciplina.',
+    'intro6':'A ética é o eixo silencioso de toda a trajetória. Há mais de uma década, Julio investiga filosofia moral com o rigor de quem estuda e a urgência de quem acredita que <strong>o que pensamos sobre o mundo determina o que fazemos nele</strong>.',
+    // ── CARD ROLES ──
+    'r-brazuca':'Fundador & Editor','r-founder-curator':'Fundador, Curador & Designer','r-posteres':'Fundador & Curador','r-davila':'Designer de Mídias Sociais',
+    'r-epub':'Epub 3','r-costurinhas':'Social Media Designer',
+    'r-carol':'Designer Gráfico & Editor de Vídeo','r-artdir':'Direção de Arte',
+    'r-digpub':'Publicação Digital com InDesign','r-ind-cs5':'InDesign CS5 — Módulo I',
+    'r-portal':'Editor & Produtor de Conteúdo Web','r-superlistas':'Editor',
+    'r-veganismos':'Editor & Produtor de Conteúdo','r-screen':'Técnicas de Roteiro & Produção',
+    'r-greystone':'Diploma em Inteligência Artificial','r-ai-toolkit':'Toolkit de IA para News',
+    'r-aner-ai':'IA Generativa em Redações','r-gni':'Fundamentals Lab',
+    'r-ai-biz':'IA Aplicada aos Negócios','r-greenedge':'Auxiliar de Cozinha',
+    'r-doordash':'Entregador','r-pisces':'Colhedor & Assistente Rural',
+    'r-pedacin':'Atendente de Bar','r-prado-coc':'Bartender',
+    'r-eco':'Repositor, Operador de Caixa & Comprador','r-nec':'Assistente Administrativo',
+    'r-bandfm':'Equipe de Divulgação','r-lacta':'Vendedor de Chocolates',
+    'r-ilsc':'Inglês Geral — Avançado 1','r-albright':'Inglês Geral — Intermediário Superior',
+    'r-microcamp':'Tecnologia da Informação','r-guitar':'Aulas de Violão',
+    'r-highschool':'Ensino Médio','r-primary2':'Ensino Fundamental — 2ª Fase',
+    'r-primary1':'Ensino Fundamental — 1ª Fase',    'r-kindy':'Educação Infantil','r-ethicast':'Comentarista',
+    'r-vegan-design':'Designer Ativista','r-vegpedia':'Fundador & Editor',
+    'r-animal-ethics':'Riscos de Sofrimento Futuro','r-ufmg':'Consideração Moral dos Animais',
+    'r-ufu':'Teorias Éticas & Animais Não-Humanos','r-gfi':'A Ciência das Proteínas Alternativas',
+    'r-30posteres':'Activist Designer','r-ceva':'Advocacia Vegana Eficaz',
+    'r-av':'Ativista','r-activist':'Ativista',
+    'r-design-lib-cur':'Fundador, Curador & Designer',
+    'r-bib-hub-cur':'Fundador, Curador & Designer',
+    'r-ai-lib-cur':'Fundador, Curador & Designer',
+
+
+    // ── CARD DESCRIPTIONS ──
+    'd-tutor':'Ensino individual das principais ferramentas da Adobe Creative Cloud e conceitos essenciais de design. Projetos práticos do zero ao arquivo finalizado.',
+    'd-brazuca':'Blog pessoal de design em português. Referências, conceitos, tendências e reflexões sobre o mercado de design brasileiro.',
+    'd-posteres':'Arquivo pessoal de referências de gig posters nacionais e internacionais. Um projeto de curadoria visual em andamento desde 2014.',
+    'd-edicase':'Direção de arte, diagramação, aprovação final e entrega de arquivos prontos para impressão. Mais de 2.000 edições impressas e digitais produzidas em mais de uma década.',
+    'd-davila':'Criação de conteúdo visual para redes sociais — layouts de fotografia de produtos, posts promocionais e materiais com identidade visual consistente para empório gourmet no Morumbi, São Paulo.',
+    'd-epub':'Criação de publicações Epub 3 interativas usando Adobe InDesign para diagramação e Sigil para estruturação, validação e exportação correta do arquivo.',
+    'd-costurinhas':'Desenvolvimento de materiais institucionais para impresso e digital. Crescimento de 1.000% no engajamento das redes sociais da cliente em 6 meses.',
+    'd-artdir':'Curso extracurricular de direção de arte com foco em conceito e direção criativa.',
+    'd-carol':'Edição de imagens para e-commerce, materiais institucionais e vídeos no YouTube para estúdio de costura brasileiro.',
+    'd-digpub':'Produção de publicações digitais interativas e eBooks com Adobe InDesign, incluindo recursos multimídia e navegação não-linear.',
+    'd-viuk':'Criação, execução e finalização de edição de imagens digitais para publicações impressas e web.',
+    'd-ind-cs5':'Treinamento técnico em InDesign CS5 com foco em diagramação editorial profissional. O início do domínio sobre a ferramenta central de toda a carreira.',
+    'd-unip':'Bacharelado em Design Gráfico com ênfase em comunicação visual. Base teórica e prática que consolidou a carreira editorial.',
+    'd-design-lib':'Seleção manual dos melhores recursos de design: ferramentas, tipografia, UI/UX, branding, motion e referências visuais.',
+    'd-biblioverse':'Plataforma editorial multitemática com curadoria sobre IA, Design, Mídias Sociais, Programação, Idiomas, Games e Música. Gestão editorial, produção de conteúdo e estratégia de distribuição — um projeto que sintetiza design, curadoria e tecnologia.',
+    'd-portal':'Gestão editorial e produção de conteúdo evergreen distribuído para os maiores portais de mídia do Brasil: UOL, iG, MSN, R7, Terra e outros.',
+    'd-superlistas':'Blog de listas cobrindo arte, design, cultura pop, geek, educação, fotografia, música, viagens e gastronomia.',
+    'd-veganismos':'Revista digital sobre veganismo. Gestão editorial e produção de conteúdo para o público vegano brasileiro por 4 anos. Um dos projetos mais duradouros da carreira.',
+    'd-screen':'Técnicas de roteiro para cinema: storyline, premissa, outline e roteiro completo de curta-metragem.',
+    'd-ai-lib':'Seleção manual das melhores ferramentas, modelos, pesquisas e recursos de IA. De generativa a ética, do técnico ao acessível.',
+    'd-greystone':'Diploma com foco nos fundamentos e aplicações práticas de IA: machine learning, redes neurais, visão computacional, processamento de linguagem natural e ética em IA.',
+    'd-ai-toolkit':'Programa online de oito workshops (8h no total) da Google News Initiative, focado no uso estratégico de ferramentas de IA para impulsionar a transformação digital e os negócios de organizações de notícias.',
+    'd-aner-ai':'Técnicas avançadas de uso de IA generativa em redações: geração de texto, criação de imagens e fluxos de trabalho editoriais assistidos por IA.',
+    'd-gni':'Programa de UX design e marketing digital para jornalismo e comunicação, usando metodologias e ferramentas Google.',
+    'd-ai-biz':'Introdução à IA e como ela pode ser usada para aprimorar os negócios — aplicações, ferramentas e usos estratégicos da inteligência artificial em organizações.',
+    'd-greenedge':'Auxiliar de cozinha em ambiente de gastronomia australiana, mantendo a cozinha em ritmo acelerado. Primeira experiência formal de trabalho na Austrália.',
+    'd-doordash':'Entrega de alimentos de bicicleta em Brisbane. Rotas urbanas com foco em pontualidade e atendimento ao cliente.',
+    'd-pisces':'Plantio, cultivo e colheita de plantas exóticas, aquáticas e convencionais em estufas. Trabalho manual em ambiente rural na Austrália.',
+    'd-pedacin':'Atendimento direto ao público em ambiente de alto volume, vendas e serviço de bebidas.',
+    'd-prado-coc':'Preparo e serviço de coquetéis em eventos privados. Gestão de insumos e organização do espaço de trabalho.',
+    'd-eco':'Repositor de frutas e verduras, operador de caixa e responsável pelas compras de hortifrúti do estabelecimento.',
+    'd-nec':'Controle de estoque. Gestão de entrada e saída de equipamentos eletrônicos. Primeiro emprego formal.',
+    'd-bandfm':'Ativações externas, eventos e promoções comerciais. Relacionamento com o público, distribuição de brindes e divulgação de marca.',
+    'd-lacta':'Vendedor de chocolates em stand de supermercado durante a promoção de Páscoa. Contato direto com consumidores.',
+    'd-ilsc':'Programa intensivo de 12 semanas. Iniciou no nível Intermediate 2 e concluiu no Advanced 1.',
+    'd-albright':'24 semanas de inglês geral. Concluído no nível Intermediate Superior–Avançado. Base para o ingresso no Greystone College.',
+    'd-microcamp':'Treinamento técnico com foco em fundamentos de hardware e software, configuração e instalação de redes em ambiente Windows, e demais conceitos gerais de informática.',
+    'd-guitar':'Técnica básica e intermediária, teoria musical aplicada e repertório variado.',
+    'd-highschool':'1º, 2º e 3º anos do ensino médio. Período formativo em Bambuí, MG.',
+    'd-primary2':'5º ao 8º ano do ensino fundamental.',
+    'd-primary1':'2º ao 4º ano do ensino fundamental.',
+    'd-primary0':'1º ano do ensino fundamental.',
+    'd-kindy':'Educação Infantil I e II.',
+    'd-ethicast':'20 episódios sobre ética animal: senciência, especismo, utilitarismo, direitos animais e aplicações práticas.',
+    'd-vegan-design':'Design gráfico como ferramenta de ativismo: criação de peças visuais para divulgação vegana e causas relacionadas à ética animal.',
+    'd-vegpedia':'Enciclopédia independente de conhecimento sobre questões animais em português: ética, ativismo, nutrição, legislação e filosofia.',
+    'd-animal-ethics':'Curso sobre riscos de sofrimento animal e humano em cenários futuros, com abordagem filosófica e empírica.',
+    'd-ufmg':'Curso de extensão sobre o debate filosófico em torno da consideração moral de animais não-humanos.',
+    'd-ufu':'Curso de extensão explorando teorias éticas: utilitarismo, direitos animais, ética do cuidado e filosofia moral aplicada à questão animal.',
+    'd-gfi':'Aspectos nutricionais, produção plant-based, fermentação e o papel das alternativas sem origem animal na sustentabilidade alimentar global.',
+    'd-30posteres':'Série de 30 pôsteres sobre veganismo e direitos animais, unindo design gráfico e ativismo visual. Arte com propósito.',
+    'd-ceva':'Técnicas de advocacia baseadas em evidências: comunicação empática, manejo de objeções e estratégias de persuasão orientadas à compaixão.',
+    'd-av':'Cubo da Verdade: exibição de imagens reais de exploração animal em espaços públicos em São Paulo, com engajamento direto do público para estimular o diálogo sobre veganismo.',
+    'd-veddas':'Vegetarianismo Ético, Defesa dos Direitos Animais e Sociedade. Distribuição de panfletos, diálogo público e exibição de vídeos em espaços públicos.',
+
+    // ── CATEGORY TAGS ──
+    'ctag1':'Editorial · Identidade · Tipografia · Impresso & Digital',
+    'ctag2':'Editorial · CMS · WordPress · Curadoria · Distribuição',
+    'ctag3':'IA Generativa · Direção de IA · Curadoria de IA',
+    'ctag4':'Gastronomia · Agricultura · Varejo · Logística · Serviços',
+    'ctag5':'Idiomas · Tecnologia · Música · Educação Básica',
+    'ctag6':'Ética Animal · Filosofia Moral · Ativismo · Divulgação',
+
+    // ── SKILLS ──
+    'sk-knowledge':'Conhecimento','sk-tools':'Hard Skills & Ferramentas','sk-soft':'Habilidades Sociais',
+    'sk-visual':'Percepção Visual','sk-editorial':'Design Editorial','sk-gdesign':'Design Gráfico',
+    'sk-creativity':'Criatividade','sk-artdir2':'Direção de Arte','sk-branding':'Branding',
+    'sk-typo':'Tipografia','sk-english':'Inglês','sk-blogging':'Blogging',
+    'sk-moralphil':'Filosofia Moral','sk-music':'Música','sk-film':'Cinema','sk-uxui':'UX/UI','sk-automation':'Process Automation','sk-automation':'Automação de Processos',
+    'sk-socialmedia':'Redes Sociais','sk-genai':'IAs Generativas',
+    'sk-wordpress':'CMS WordPress','sk-windows':'Windows','sk-macos':'MacOS',
+    'sk-illustrator':'Illustrator','sk-gdrive':'Google Drive','sk-msoffice':'Microsoft Office',
+    'sk-profethics':'Ética Profissional','sk-teamwork':'Trabalho em Equipe',
+    'sk-deadlines':'Comprometimento com Prazos','sk-adaptability':'Adaptabilidade',
+    'sk-detail':'Atenção ao Detalhe','sk-org':'Organização',
+    'sk-problem':'Resolução de Problemas','sk-fastlearn':'Aprendizado Rápido',
+
+    // ── BIO PARAGRAPHS ──
+    'bio-p1':'Designer gráfico e criador de conteúdo com mais de uma década de experiência em comunicação visual. Especializado em design editorial, mídias sociais e produção de conteúdo — tendo criado e diagramado mais de 2.000 edições de revistas e desempenhado papel central na construção do Portal EdiCase.',
+    'bio-p2':'Bacharel em Design Gráfico pela UNIP, com expertise em InDesign. Photoshop, Illustrator, WordPress, edição de vídeo e gestão de redes sociais também fazem parte do repertório. Atualmente mora em Brisbane, na Austrália — expandindo horizontes e vocabulário em inglês em igual medida. Estuda IA formalmente no Greystone College.',
+    
+    // ── FILTER CHIPS ──
+    'f-brazil':'🇧🇷 Brasil','f-australia':'🇦🇺 Austrália',
+    // ── CARD ORGS ──
+    'org-brazuca':'Brazuca Design',
+    'org-carol':'Estúdio de Costura Carol Viana',
+    'org-biblioverse':'BiblioVerse — Hub de Curadoria',
+    'org-design-lib':'The Design Library — BiblioVerse',
+    'org-ai-lib':'The AI Library — BiblioVerse',
+    'org-aner':'ANER — Associação Nacional de Editoras de Revistas',
+    'org-ufmg':'UFMG — Universidade Federal de Minas Gerais',
+    'org-ufu':'UFU — Universidade Federal de Uberlândia',
+    'org-gfi':'GFI — Good Food Institute',
+    'org-ethicast':'Ethicast — Podcast de Ética Animal',
+    'org-ceva':'Center for Effective Vegan Advocacy',
+    'org-av':'Anonymous for the Voiceless',
+    'org-tutor':'Tutor 1:1 — Ensino Independente',
+    'org-gni-lab':'Google / Fundamentals Lab Program',
+    'org-albright':'Albright Institute of Business and Language',
+
+    'org-ung':'UNG — Universidade de Guarulhos',
+    'bio-p3':'Fora do trabalho, gosta de discutir ética como a maioria das pessoas fala de esportes. Também é apaixonado por divulgação científica, filosofia, existencialismo, música, cinema, esportes, games e humor.',
+
+    // ── EMP BADGES ──
+    'emp-ft':'Tempo Integral','emp-pt':'Meio Período','emp-cas':'Eventual',
+
+    // ── DATES ──
+    'present':'Presente',
+
+    // ── FOOTER ──
+    'footer-thanks':'Obrigado pela visita.','footer-copy':'© 2026 Julio Cesar Prado da Silva — Digital Resume',
+    'footer-brand':'',
+
+    // ── BOTTOM NAV ──
+    'bnav1':'Design','bnav2':'Social','bnav3':'IA','bnav4':'Manual','bnav5':'Geral','bnav6':'Ética',
+
+  },
+  en: {
+    'logo-sub':'Digital Resume',
+    'hero-professional':'Graphic Designer · Social Media · Digital Curator · AI Student',
+    'hero-sub':'<strong>Over a decade turning concepts into visual experiences. Six universes, one journey.</strong>',
+    'bio-open':'Learn more','bio-close':'Learn less',
+    'stat-years':'14+ years of exp.','stat-editions':'Design projects','stat-universes':'Universes','stat-countries':'Countries',
+    'filter-label':'Type','filter-loc':'Location','nav-categories':'Categories','nav-filters':'Filters','f-edu':'Education','f-work':'Work','f-vol':'Volunteering',
+    'tab1':'Graphic Design','tab2':'Social Media','tab3':'AI','tab4':'Manual Work','tab5':'General Knowledge','tab6':'Ethics',
+    'h1':'Graphic Design','h2':'Social Media & Content','h3':'Artificial Intelligence','h4':'Manual Work','h5':'General Knowledge','h6':'Ethics',
+    'bw':'Work','bs':'Study','bp':'Social',
+    'r-edicase':'Graphic Designer Editorial','r-viuk':'Graphic Design Assistant','r-unip':'Bachelor of Graphic Design','r-tutor':'Graphic Design Tutor',
+    'intro1':'Graphic design is not a job for Julio — it is the language he thinks in. Over a decade in editorial publishing, with <strong>2,000+ magazines produced</strong>, sharpened his eye for visual hierarchy, typography and composition.',
+    'intro2':'A natural editorial manager, Julio understands content as architecture: every piece has purpose, position and a relationship to the whole. He spent years organising and creating <strong>visual and written content</strong> — for companies, individuals and personal projects — operating across both visual execution and publishing strategy.',
+    'intro3':'He came to AI through design — and stayed for the philosophy that comes with it. An <strong>early adopter of creative automation</strong>, he now formally studies AI at Greystone College and applies generative tools in editorial and curation work.',
+    'intro4':'Before being a designer, he was a cashier, stocker, bartender, delivery rider, farmhand. A journey that shaped <strong>discipline, adaptability and respect for physical work</strong>.',
+    'intro5':'A structural curious, Julio accumulates knowledge that doesn\'t fit a single specialty. <strong>He learns for pleasure and applies by instinct</strong>. His English went from Intermediate to Advanced 1 in under a year.',
+    'intro6':'Ethics is the silent axis of the entire journey. For over a decade, Julio investigates moral philosophy with the rigour of a scholar and the urgency of someone who believes <strong>what we think about the world determines what we do in it</strong>.',
+    // ── CARD ROLES ──
+    'r-brazuca':'Founder & Editor','r-founder-curator':'Founder, Curator & Designer','r-posteres':'Founder & Curator','r-davila':'Social Media Designer',
+    'r-epub':'Epub 3','r-costurinhas':'Social Media Designer',
+    'r-carol':'Graphic Designer & Video Editor','r-artdir':'Art Direction',
+    'r-digpub':'Digital Publishing with InDesign','r-ind-cs5':'InDesign CS5 — Module I',
+    'r-portal':'Web Content Editor & Producer','r-superlistas':'Editor',
+    'r-veganismos':'Content Editor & Producer','r-screen':'Screenwriting Techniques & Production',
+    'r-greystone':'Diploma in Artificial Intelligence','r-ai-toolkit':'AI Toolkit for News',
+    'r-aner-ai':'Generative AI in Newsrooms','r-gni':'Fundamentals Lab',
+    'r-ai-biz':'AI Applied to Business','r-greenedge':'Dishwasher & Kitchenhand',
+    'r-doordash':'Delivery Rider','r-pisces':'Plant Picker & Farmhand',
+    'r-pedacin':'Bar Attendant','r-prado-coc':'Bartender',
+    'r-eco':'Stocker, Cashier & Buyer','r-nec':'Administrative Assistant',
+    'r-bandfm':'Promotional Team','r-lacta':'Chocolate Salesperson',
+    'r-ilsc':'General English — Advanced 1','r-albright':'General English — Upper Intermediate',
+    'r-microcamp':'Information Technology','r-guitar':'Guitar Lessons',
+    'r-highschool':'Secondary School (High School)','r-primary2':'Primary Education — Stage II',
+    'r-primary1':'Primary Education — Stage I',    'r-kindy':'Early Childhood Education','r-ethicast':'Commentator',
+    'r-vegan-design':'Activist Designer','r-vegpedia':'Founder & Editor',
+    'r-animal-ethics':'Risks of Future Suffering','r-ufmg':'Moral Consideration of Animals',
+    'r-ufu':'Ethical Theories & Non-Human Animals','r-gfi':'The Science of Alternative Proteins',
+    'r-30posteres':'Designer Ativista','r-ceva':'Effective Vegan Advocacy',
+    'r-av':'Activist','r-activist':'Activist',
+    'r-design-lib-cur':'Founder, Curator & Designer',
+    'r-bib-hub-cur':'Founder, Curator & Designer',
+    'r-ai-lib-cur':'Founder, Curator & Designer',
+
+
+    // ── CARD DESCRIPTIONS ──
+    'd-tutor':'One-on-one teaching of essential Adobe Creative Cloud tools and core design concepts. Projects from scratch to final file.',
+    'd-brazuca':'Personal design blog in Portuguese. References, concepts, trends and reflections on Brazilian graphic design.',
+    'd-posteres':'Personal archive of national and international gig poster references. A visual curation project ongoing since 2014.',
+    'd-edicase':'Art direction, layout, final approval and press-ready file delivery. Over 2,000 print and digital editions produced across more than a decade.',
+    'd-davila':'Visual content creation for social media — product photography layouts, promotional posts and branded assets for a gourmet food emporium in Morumbi, São Paulo.',
+    'd-epub':'Creating interactive Epub 3 publications using Adobe InDesign for layout and Sigil for proper file structuring, validation and export.',
+    'd-costurinhas':'Development of institutional materials for print and digital. Grew the client\'s social media engagement by 1,000% in 6 months.',
+    'd-artdir':'Extracurricular course in art direction focused on concept and creative direction.',
+    'd-carol':'Image editing for e-commerce, institutional materials and YouTube videos for a Brazilian sewing studio.',
+    'd-digpub':'Production of interactive digital publications and eBooks with Adobe InDesign, including multimedia features and non-linear navigation.',
+    'd-viuk':'Creation, execution and finishing of digital image editing for print and web publications.',
+    'd-ind-cs5':'Technical training in InDesign CS5 with focus on professional editorial layout. The beginning of mastery over the tool most central to the career.',
+    'd-unip':'Bachelor\'s degree in Graphic Design with emphasis on visual communication. The theoretical and practical foundation that consolidated the editorial career.',
+    'd-design-lib':'Hand-curated selection of the best design resources: tools, typography, UI/UX, branding, motion and visual references.',
+    'd-biblioverse':'Multi-thematic editorial platform covering AI, Design, Social Media, Coding, Language, Games and Music. Editorial management, content production and distribution strategy — a project that synthesises design, curation and technology.',
+    'd-portal':'Editorial management and evergreen content production distributed to Brazil\'s largest media portals: UOL, iG, MSN, R7, Terra and others.',
+    'd-superlistas':'A listicle blog covering art, design, pop culture, geek topics, education, photography, music, travel and gastronomy.',
+    'd-veganismos':'Digital magazine on veganism. Editorial management and content production for the Brazilian vegan audience over 4 years. One of the longest-running projects in the career.',
+    'd-screen':'Screenwriting techniques for film: storyline, premise, outline and full short-film script.',
+    'd-ai-lib':'Hand-curated selection of the best AI tools, models, research and resources. From generative to ethics, from technical to accessible.',
+    'd-greystone':'Diploma focused on AI fundamentals and practical applications: machine learning, neural networks, computer vision, NLP and AI ethics.',
+    'd-ai-toolkit':'Eight-workshop online programme (8h total) by Google News Initiative, focused on the strategic use of AI tools to drive digital transformation and support the business of news organisations.',
+    'd-aner-ai':'Advanced techniques for using generative AI in newsrooms: text generation, image creation and AI-assisted editorial workflows.',
+    'd-gni':'UX design and digital marketing programme for journalism and communication, using Google methodologies and tools.',
+    'd-ai-biz':'Introduction to AI and how it can be used to enhance business operations — applications, tools and strategic uses of artificial intelligence in organisations.',
+    'd-greenedge':'Kitchenhand in an Australian gastronomy setting, keeping the kitchen running at pace. First formal work experience in Australia.',
+    'd-doordash':'Food delivery by bicycle in Brisbane. Urban routes with a focus on punctuality and customer service.',
+    'd-pisces':'Planted, tended and harvested exotic, aquatic and conventional plants in greenhouses. Manual work in a rural Australian setting.',
+    'd-pedacin':'Customer-facing role in a high-volume environment, direct sales and beverage service.',
+    'd-prado-coc':'Preparation and service of cocktails at private events. Ingredient management and workspace organisation.',
+    'd-eco':'Fruit and vegetable stocker, cashier operator and responsible for purchasing produce at the establishment.',
+    'd-nec':'Stock control. Managing inbound and outbound electronic equipment. First formal employment.',
+    'd-bandfm':'Outdoor activations, events and commercial promotions. Public engagement, merchandise distribution and brand promotion.',
+    'd-lacta':'Chocolate sales associate at a supermarket stand during the Easter promotion. Direct consumer engagement.',
+    'd-ilsc':'12-week intensive programme. Started at Intermediate 2 and finished at Advanced 1.',
+    'd-albright':'24 weeks of general English. Completed at Upper Intermediate–Advanced level. Foundation for entry into Greystone College.',
+    'd-microcamp':'Technical training covering hardware and software fundamentals, Windows network configuration and installation, and general computing concepts.',
+    'd-guitar':'Basic and intermediate technique, applied music theory and varied repertoire.',
+    'd-highschool':'Years 10, 11 and 12 of secondary school. Formative period in Bambuí, MG.',
+    'd-primary2':'Years 5 to 8 of primary school.',
+    'd-primary1':'Years 2 to 4 of primary school.',
+    'd-primary0':'Year 1 of primary school.',
+    'd-kindy':'Kindergarten I and II.',
+    'd-ethicast':'20 episodes on animal ethics: sentience, speciesism, utilitarianism, animal rights and applied philosophy.',
+    'd-vegan-design':'Graphic design as a tool for activism: creation of visual pieces for vegan outreach and causes related to animal ethics.',
+    'd-vegpedia':'Independent encyclopaedia of knowledge on animal issues in Portuguese: ethics, activism, nutrition, legislation and philosophy.',
+    'd-animal-ethics':'Course on risks of animal and human suffering in future scenarios, with a philosophical and empirical approach.',
+    'd-ufmg':'Extension course on the philosophical debate around the moral consideration of non-human animals.',
+    'd-ufu':'Extension course exploring ethical theories: utilitarianism, animal rights, care ethics and moral philosophy applied to the animal question.',
+    'd-gfi':'Nutritional aspects, plant-based production, fermentation and the role of animal-free alternatives in global food sustainability.',
+    'd-30posteres':'Series of 30 posters on veganism and animal rights, combining graphic design with visual activism. Art with purpose.',
+    'd-ceva':'Evidence-based advocacy techniques: empathetic communication, objection handling and compassion-driven persuasion strategies.',
+    'd-av':'Cube of Truth: display of real footage of animal exploitation in public spaces in São Paulo, with direct public engagement to spark dialogue about veganism.',
+    'd-veddas':'Vegetarianismo Ético, Defesa dos Direitos Animais e Sociedade. Leafleting, public dialogue and video screenings in public spaces.',
+
+    // ── CATEGORY TAGS ──
+    'ctag1':'Editorial · Identity · Typography · Print & Digital',
+    'ctag2':'Editorial · CMS · WordPress · Curation · Distribution',
+    'ctag3':'Generative AI · AI Direction · AI Curation',
+    'ctag4':'Gastronomy · Agriculture · Retail · Logistics · Services',
+    'ctag5':'Languages · Technology · Music · Core Education',
+    'ctag6':'Animal Ethics · Moral Philosophy · Activism · Outreach',
+
+    // ── SKILLS ──
+    'sk-knowledge':'Knowledge','sk-tools':'Hard Skills & Tools','sk-soft':'Soft Skills',
+    'sk-visual':'Visual Perception','sk-editorial':'Editorial Design','sk-gdesign':'Graphic Design',
+    'sk-creativity':'Creativity','sk-artdir2':'Art Direction','sk-branding':'Branding',
+    'sk-typo':'Typography','sk-english':'English','sk-blogging':'Blogging',
+    'sk-moralphil':'Moral Philosophy','sk-music':'Music','sk-film':'Film','sk-uxui':'UX/UI','sk-automation':'Process Automation',
+    'sk-socialmedia':'Social Media','sk-genai':'Generative AI',
+    'sk-wordpress':'CMS WordPress','sk-windows':'Windows','sk-macos':'macOS',
+    'sk-illustrator':'Illustrator','sk-gdrive':'Google Drive','sk-msoffice':'Microsoft Office',
+    'sk-profethics':'Professional Ethics','sk-teamwork':'Teamwork',
+    'sk-deadlines':'Deadline Commitment','sk-adaptability':'Adaptability',
+    'sk-detail':'Attention to Detail','sk-org':'Organisation',
+    'sk-problem':'Problem-Solving','sk-fastlearn':'Fast Learning',
+
+    // ── BIO PARAGRAPHS ──
+    'bio-p1':'Graphic designer and content creator with over a decade of experience in visual communication. Specialised in editorial design, social media and content production — having created and laid out over 2,000 magazine editions and played a central role in building the EdiCase Portal.',
+    'bio-p2':'Holds a degree in Graphic Design from UNIP, with InDesign expertise. Photoshop, Illustrator, WordPress, video editing and social media management are also part of the toolkit. Currently living in Brisbane, Australia — expanding horizons and English vocabulary in equal measure. Formally studying AI at Greystone College.',
+    
+    // ── FILTER CHIPS ──
+    'f-brazil':'🇧🇷 Brazil','f-australia':'🇦🇺 Australia',
+    // ── CARD ORGS ──
+    'org-brazuca':'Brazuca Design',
+    'org-carol':'Carol Viana Sewing Studio',
+    'org-biblioverse':'BiblioVerse — Curation Hub',
+    'org-design-lib':'The Design Library — BiblioVerse',
+    'org-ai-lib':'The AI Library — BiblioVerse',
+    'org-aner':'ANER — National Magazine Publishers Association',
+    'org-ufmg':'UFMG — Federal University of Minas Gerais',
+    'org-ufu':'UFU — Federal University of Uberlândia',
+    'org-gfi':'GFI — Good Food Institute',
+    'org-ethicast':'Ethicast — Animal Ethics Podcast',
+    'org-ceva':'Center for Effective Vegan Advocacy',
+    'org-av':'Anonymous for the Voiceless',
+    'org-tutor':'Tutor 1:1 — Independent Teaching',
+    'org-gni-lab':'Google / Fundamentals Lab Program',
+    'org-albright':'Albright Institute of Business and Language',
+
+    'org-ung':'UNG — Universidade de Guarulhos',
+    'bio-p3':'Outside of work, he enjoys discussing ethics the way most people talk about sports. Also passionate about science communication, philosophy, existentialism, music, film, sports, games and humour.',
+
+    // ── EMP BADGES ──
+    'emp-ft':'Full-Time','emp-pt':'Part-Time','emp-cas':'Casual',
+
+    // ── DATES ──
+    'present':'Present',
+
+    // ── FOOTER ──
+    'footer-thanks':'Thanks for stopping by.','footer-copy':'© 2026 Julio Cesar Prado da Silva — Digital Resume',
+    'footer-brand':'',
+
+    // ── BOTTOM NAV ──
+    'bnav1':'Design','bnav2':'Social','bnav3':'AI','bnav4':'Manual','bnav5':'General','bnav6':'Ethics',
+
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  document.getElementById('btnPT').classList.toggle('active', lang==='pt');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  const biofull = document.getElementById('biofull');
+  const lbl = document.getElementById('bioBtnLabel');
+  if (lbl) { const isOpen = biofull?.classList.contains('open'); lbl.textContent = isOpen ? (t['bio-close']||'Learn less') : (t['bio-open']||'Learn more'); }
+}
+
+
+// ── NAME SCRAMBLE ANIMATION ──
+(function() {
+  const CHARS = 'ABCDEFGHIJKLMNOPRSTVWXYZabcdefghijklmnoprstv#@$%&!?';
+  function scrambleTo(el, finalChar, duration, onDone) {
+    let start = null;
+    const steps = 8;
+    function frame(ts) {
+      if (!start) start = ts;
+      const prog = Math.min((ts - start) / duration, 1);
+      const step = Math.floor(prog * steps);
+      if (step >= steps - 1) {
+        el.textContent = finalChar;
+        el.classList.remove('glitching');
+        if (onDone) onDone();
+        return;
+      }
+      el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+      el.classList.add('glitching');
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function scrambleWord(el, finalWord, duration, onDone) {
+    // Animate character by character, collapsing extra chars
+    const original = el.textContent;
+    const origLen  = original.length;
+    const finalLen = finalWord.length;
+
+    // Build spans for each original char
+    el.innerHTML = '';
+    const spans = [];
+    for (let i = 0; i < origLen; i++) {
+      const s = document.createElement('span');
+      s.textContent = original[i];
+      s.className = 'glitch-char';
+      el.appendChild(s);
+      spans.push(s);
+    }
+
+    const msPerChar = duration / origLen;
+
+    spans.forEach((s, i) => {
+      setTimeout(() => {
+        if (i < finalLen) {
+          // scramble to final char
+          let start = null;
+          const steps = 7;
+          const target = finalWord[i];
+          function frame(ts) {
+            if (!start) start = ts;
+            const prog = Math.min((ts - start) / 280, 1);
+            const step = Math.floor(prog * steps);
+            if (step >= steps - 1) {
+              s.textContent = target;
+              s.classList.remove('glitch-char');
+              if (i === finalLen - 1 && onDone) setTimeout(onDone, 80);
+              return;
+            }
+            s.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+            requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        } else {
+          // extra char — glitch then vanish
+          let start = null;
+          const steps = 5;
+          function frame(ts) {
+            if (!start) start = ts;
+            const prog = Math.min((ts - start) / 200, 1);
+            if (prog >= 1) { s.textContent = ''; return; }
+            s.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+            requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        }
+      }, i * msPerChar);
+    });
+  }
+
+  // Sequence: wait for hero to appear, then animate
+  setTimeout(function() {
+    const nmU    = document.getElementById('nm-u');
+    const nmLast = document.getElementById('nm-last');
+    if (!nmU || !nmLast) return;
+
+    // Step 1: u → v
+    scrambleTo(nmU, 'v', 320, function() {
+      // Step 2: Prado da Silva → Prava (after short pause)
+      setTimeout(function() {
+        scrambleWord(nmLast, 'Prava', 900, null);
+      }, 400);
+    });
+  }, 2000);
+})();
+
+
+
+// ── SKILLS BARS ANIMATION ──
+function animateSkills() {
+  const panel = document.getElementById('skillsPanel');
+  if (panel && !panel.classList.contains('visible')) panel.classList.add('visible');
+}
+
+// FAB scroll handled in consolidated scroll listener above
+</script>
+</body>
+</html>
