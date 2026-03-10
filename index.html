@@ -399,6 +399,16 @@ header {
   border-bottom: 1px solid var(--outline-variant);
   margin-top: 0;
 }
+@media (max-width:640px) {
+  .section-nav-wrapper { position: relative; }
+  .section-nav-wrapper::after {
+    content: ''; pointer-events: none;
+    position: absolute; top: 0; right: 0; bottom: 0; width: 40px;
+    background: linear-gradient(to right, transparent, rgba(255,251,254,.97));
+    z-index: 1; transition: opacity .3s;
+  }
+  .section-nav-wrapper.scrolled-end::after { opacity: 0; }
+}
 .section-nav {
   max-width: 1120px; margin: 0 auto;
   display: flex; align-items: center; gap: 6px; padding: 10px 24px;
@@ -801,6 +811,7 @@ header {
   .hero-photo { width:90px; height:105px; border-radius:10px; }
   .section-nav { padding:8px 16px; }
   .filter-strip { display:none; }
+  .section-nav .nav-inline-label { display:none; }
   .main { padding:20px 16px 24px; }
   .cards-grid { grid-template-columns:1fr; }
   .category-section { scroll-margin-top: 120px; }
@@ -1725,6 +1736,19 @@ function scrollToSection(id, tabEl) {
   }
 }
 function setActiveNav(btn) { document.querySelectorAll('.bottom-nav-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+
+// ── MOBILE NAV SCROLL FADE ──
+(function() {
+  const nav = document.getElementById('sectionNavInner');
+  const wrapper = document.getElementById('sectionNav');
+  if (!nav || !wrapper) return;
+  function updateFade() {
+    const atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 4;
+    wrapper.classList.toggle('scrolled-end', atEnd);
+  }
+  nav.addEventListener('scroll', updateFade, { passive: true });
+  updateFade();
+})();
 
 // ── LANGUAGE ──
 let currentLang = 'en';
