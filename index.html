@@ -1685,6 +1685,7 @@ function toggleBio() {
     icon.textContent = '+';
     const t = translations[currentLang];
     lbl.textContent = t['bio-open'] || 'Learn more';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     // expand fully
     full.classList.remove('peek');
