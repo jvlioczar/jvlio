@@ -627,9 +627,9 @@ header {
 
 /* ─────────────────── BOTTOM NAV ─────────────────── */
 .bottom-nav {
-  display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
-  background:rgba(255,251,254,.94); backdrop-filter:blur(14px);
-  border-top:1px solid var(--outline-variant); padding:6px 0 14px;
+  display:none; position:sticky; top:var(--header-h); z-index:300;
+  background:rgba(255,251,254,.97); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--outline-variant); padding:6px 0;
 }
 .bottom-nav-items { display:flex; justify-content:space-around; }
 .bottom-nav-btn {
@@ -759,7 +759,7 @@ header {
 }
 .fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .fab-top:hover { opacity: .8; }
-@media (max-width: 600px) { .fab-top { bottom: 80px; right: 16px; } }
+@media (max-width: 600px) { .fab-top { bottom: 32px; right: 16px; } }
 
 
 /* ─────────────────── REDUCED MOTION ─────────────────── */
@@ -801,7 +801,7 @@ header {
   .hero-photo { width:90px; height:105px; border-radius:10px; }
   .section-nav-wrapper { display:none; }
   .filter-strip { padding:10px 16px; }
-  .main { padding:20px 16px 110px; }
+  .main { padding:20px 16px; }
   .cards-grid { grid-template-columns:1fr; }
   .bottom-nav { display:block; }
   .site-footer { padding:28px 16px 24px; gap:20px; }
@@ -1007,6 +1007,18 @@ header {
     <button class="filter-chip on" data-group="location" data-filter="australia"  onclick="toggleChip(this)" data-i18n="f-australia">🇦🇺 Austrália</button>
   </div>
 </div>
+
+<!-- MOBILE NAV (sticky, visible on mobile only) -->
+<nav class="bottom-nav" aria-label="Mobile category navigation">
+  <div class="bottom-nav-items">
+    <button class="bottom-nav-btn active" onclick="scrollToSection('sec-design',null);setActiveNav(this)"><div class="nav-icon">🎨</div><span data-i18n="bnav1">Design</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-social',null);setActiveNav(this)"><div class="nav-icon">📱</div><span data-i18n="bnav2">Social</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ia',null);setActiveNav(this)"><div class="nav-icon">🤖</div><span data-i18n="bnav3">IA</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-manual',null);setActiveNav(this)"><div class="nav-icon">🛠</div><span data-i18n="bnav4">Manual</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-cg',null);setActiveNav(this)"><div class="nav-icon">📚</div><span data-i18n="bnav5">Geral</span></button>
+    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ethics',null);setActiveNav(this)"><div class="nav-icon">🤔</div><span data-i18n="bnav6">Ética</span></button>
+  </div>
+</nav>
 
 <!-- ── MAIN ── -->
 <main class="main">
@@ -1573,17 +1585,6 @@ header {
 
 </main>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav" aria-label="Mobile category navigation">
-  <div class="bottom-nav-items">
-    <button class="bottom-nav-btn active" onclick="scrollToSection('sec-design',null);setActiveNav(this)"><div class="nav-icon">🎨</div><span data-i18n="bnav1">Design</span></button>
-    <button class="bottom-nav-btn" onclick="scrollToSection('sec-social',null);setActiveNav(this)"><div class="nav-icon">📱</div><span data-i18n="bnav2">Social</span></button>
-    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ia',null);setActiveNav(this)"><div class="nav-icon">🤖</div><span data-i18n="bnav3">IA</span></button>
-    <button class="bottom-nav-btn" onclick="scrollToSection('sec-manual',null);setActiveNav(this)"><div class="nav-icon">🛠</div><span data-i18n="bnav4">Manual</span></button>
-    <button class="bottom-nav-btn" onclick="scrollToSection('sec-cg',null);setActiveNav(this)"><div class="nav-icon">📚</div><span data-i18n="bnav5">Geral</span></button>
-    <button class="bottom-nav-btn" onclick="scrollToSection('sec-ethics',null);setActiveNav(this)"><div class="nav-icon">♥</div><span data-i18n="bnav6">Ética</span></button>
-  </div>
-</nav>
 
 <footer class="site-footer">
 
@@ -1654,10 +1655,12 @@ window.addEventListener('scroll', () => {
   if (scrollEl) scrollEl.style.width = (pct * 100) + '%';
   // active tab
   const tabs = document.querySelectorAll('.section-tab');
+  const mbtns = document.querySelectorAll('.bottom-nav-btn');
   if (!window._tabClickLock) {
     let cur = 0;
     _secIds.forEach((id, i) => { const s = document.getElementById(id); if (s && s.getBoundingClientRect().top <= 160) cur = i; });
     tabs.forEach((t, i) => t.classList.toggle('active', i === cur));
+    mbtns.forEach((t, i) => t.classList.toggle('active', i === cur));
   }
   // FAB
   const fab = document.getElementById('fabTop');
