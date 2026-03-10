@@ -261,7 +261,7 @@ header {
 .hero-name {
   font-family: 'DM Serif Display', serif;
   font-style: italic;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 700; line-height: 1.05; letter-spacing: .01em;
   color: var(--on-surface); margin-bottom: 8px; white-space: nowrap;
   opacity: 0; animation: fadeUpIn .8s .3s cubic-bezier(.16,1,.3,1) forwards;
@@ -287,17 +287,21 @@ header {
 
 .hero-identity {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 24px;
+}
+
+.hero-photo-wrap {
+  flex-shrink: 0;
 }
 
 .hero-photo {
   width: 130px;
-  height: 179px;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
   border-radius: 14px;
-  flex-shrink: 0;
+  display: block;
   box-shadow: var(--sh3);
 }
 
@@ -788,8 +792,9 @@ header {
   .logo-sub { display:none; }
   .hero { padding:24px 16px 48px; }
   .hero-name { font-size:clamp(1.9rem,8vw,2.6rem); white-space:normal; word-break:break-word; }
-  .hero-identity { gap:16px; }
-  .hero-photo { width:90px; height:124px; border-radius:10px; }
+  .hero-identity { flex-direction:column; gap:12px; }
+  .hero-photo-wrap { width:100%; }
+  .hero-photo { width:100%; height:220px; border-radius:10px; }
   .section-nav-wrapper { display:none; }
   .filter-strip { padding:10px 16px; }
   .main { padding:20px 16px 110px; }
@@ -846,11 +851,15 @@ header {
       </div>
 
       <div class="hero-identity">
-        <img class="hero-photo" src="img/jvlio_photo.png" alt="Julio Cesar Prado da Silva">
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="img/jvlio_photo.png" alt="Julio Cesar Prado da Silva">
+        </div>
         <div class="hero-text">
       <h1 class="hero-name"><em>J<span id="nm-u">u</span>lio</em> Cesar <span id="nm-last">Prado da Silva</span></h1>
       <div class="hero-rule"></div>
       <p class="hero-title" data-i18n="hero-professional">Graphic Designer · Social Media · Digital Curator · AI Student</p>
+        </div><!-- /hero-text -->
+      </div><!-- /hero-identity -->
 
       <div class="hero-bio">
         <p data-i18n="hero-sub"><strong>Over a decade turning concepts into visual experiences. Six universes, one journey.</strong></p>
@@ -928,8 +937,6 @@ header {
           E-mail
         </a>
       </div>
-        </div><!-- /hero-text -->
-      </div><!-- /hero-identity -->
     </div>
 
     <div class="hero-stats">
