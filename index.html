@@ -400,7 +400,6 @@ header {
   margin-top: 0;
 }
 @media (max-width:640px) {
-  .section-nav-wrapper { position: relative; }
   .section-nav-wrapper::after {
     content: ''; pointer-events: none;
     position: absolute; top: 0; right: 0; bottom: 0; width: 40px;
@@ -443,6 +442,7 @@ header {
 .section-tab.active:hover { opacity: .88; }
 .tab-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--tab-c); transition: opacity .2s; }
 .section-tab.active .tab-dot { background: #fff !important; opacity: 1; }
+.tab-emoji { display: none; font-style: normal; font-size: .95rem; line-height: 1; flex-shrink: 0; }
 
 
 /* ── NAV INLINE LABELS ── */
@@ -812,9 +812,11 @@ header {
   .section-nav { padding:8px 16px; }
   .filter-strip { display:none; }
   .section-nav .nav-inline-label { display:none; }
+  .tab-dot { display: none; }
+  .tab-emoji { display: inline; }
   .main { padding:20px 16px 24px; }
   .cards-grid { grid-template-columns:1fr; }
-  .category-section { scroll-margin-top: 120px; }
+  .category-section { scroll-margin-top: 132px; }
   .site-footer { padding:28px 16px 24px; gap:20px; }
   .hero-contacts { flex-wrap:nowrap; gap:6px; }
   .contact-chip { font-size:.62rem; padding:0 9px 0 7px; gap:5px; height:30px; }
@@ -993,22 +995,22 @@ header {
   <nav class="section-nav" id="sectionNavInner" aria-label="Jump to category">
     <span class="nav-inline-label" data-i18n="nav-categories">Categories</span>
     <button class="section-tab active" onclick="scrollToSection('sec-design',this)">
-      <span class="tab-dot" style="background:var(--des)"></span><span data-i18n="tab1">Graphic Design</span>
+      <span class="tab-dot" style="background:var(--des)"></span><span class="tab-emoji">🎨</span><span data-i18n="tab1">Graphic Design</span>
     </button>
     <button class="section-tab" onclick="scrollToSection('sec-social',this)">
-      <span class="tab-dot" style="background:var(--soc)"></span><span data-i18n="tab2">Social Media</span>
+      <span class="tab-dot" style="background:var(--soc)"></span><span class="tab-emoji">📱</span><span data-i18n="tab2">Social Media</span>
     </button>
     <button class="section-tab" onclick="scrollToSection('sec-ia',this)">
-      <span class="tab-dot" style="background:var(--ia)"></span><span data-i18n="tab3">AI</span>
+      <span class="tab-dot" style="background:var(--ia)"></span><span class="tab-emoji">🤖</span><span data-i18n="tab3">AI</span>
     </button>
     <button class="section-tab" onclick="scrollToSection('sec-manual',this)">
-      <span class="tab-dot" style="background:var(--man)"></span><span data-i18n="tab4">Manual Work</span>
+      <span class="tab-dot" style="background:var(--man)"></span><span class="tab-emoji">🛠️</span><span data-i18n="tab4">Manual Work</span>
     </button>
     <button class="section-tab" onclick="scrollToSection('sec-cg',this)">
-      <span class="tab-dot" style="background:var(--cg)"></span><span data-i18n="tab5">General Knowledge</span>
+      <span class="tab-dot" style="background:var(--cg)"></span><span class="tab-emoji">📚</span><span data-i18n="tab5">General Knowledge</span>
     </button>
     <button class="section-tab" onclick="scrollToSection('sec-ethics',this)">
-      <span class="tab-dot" style="background:var(--eth)"></span><span data-i18n="tab6">Ethics</span>
+      <span class="tab-dot" style="background:var(--eth)"></span><span class="tab-emoji">⚖️</span><span data-i18n="tab6">Ethics</span>
     </button>
   </nav>
   <div class="filter-strip">
