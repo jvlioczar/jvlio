@@ -2097,7 +2097,7 @@ const translations = {
   }
 };
 
-function setLang(lang) {
+function setLang(lang, save = true) {
   currentLang = lang;
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
   document.getElementById('btnPT').classList.toggle('active', lang==='pt');
@@ -2110,7 +2110,18 @@ function setLang(lang) {
   const biofull = document.getElementById('biofull');
   const lbl = document.getElementById('bioBtnLabel');
   if (lbl) { const isOpen = biofull?.classList.contains('open'); lbl.textContent = isOpen ? (t['bio-close']||'Learn less') : (t['bio-open']||'Learn more'); }
+  if (save) localStorage.setItem('lang', lang);
 }
+
+(function initLang() {
+  const saved = localStorage.getItem('lang');
+  if (saved === 'pt' || saved === 'en') {
+    setLang(saved, false);
+    return;
+  }
+  const nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+  setLang(nav.toLowerCase().startsWith('pt') ? 'pt' : 'en', true);
+})();
 
 
 // ── NAME SCRAMBLE ANIMATION ──
