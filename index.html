@@ -1186,6 +1186,15 @@ header {
     <p class="category-intro" data-i18n="intro2">A natural editorial manager, Julio understands content as architecture: every piece has purpose, position and a relationship to the whole. He spent years organising and creating <strong>visual and written content</strong> — for companies, individuals and personal projects — operating across both visual execution and publishing strategy.</p>
     <div class="cards-grid">
       <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Mar/26 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
+        <div class="card-role" data-i18n="r-founder-curator">Founder, Curator & Designer</div>
+        <div class="card-org" data-i18n="org-lang-lib">The Language Learning Library — BiblioVerse</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://language.biblioverse.org/" target="_blank" rel="noopener noreferrer">language.biblioverse.org ↗</a></div>
+        <div class="card-desc" data-i18n="d-lang-lib">Hand-curated selection of the best language learning resources: apps, courses, methods, communities and tools for learners at every level. A thematic vertical within the BiblioVerse ecosystem.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="voluntariado" data-location="australia" onclick="this.classList.toggle('expanded')">
         <div class="card-top"><div class="card-badges"><span class="type-badge personal" data-i18n="bp">Social</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Feb/26 → <span data-i18n="present">Present</span></span><span class="emp-badge emp-cas" data-i18n="emp-cas">Casual</span></div>
         <div class="card-role" data-i18n="r-founder-curator">Founder, Curator & Designer</div>
         <div class="card-org" data-i18n="org-design-lib">The Design Library — BiblioVerse</div>
@@ -1364,6 +1373,14 @@ header {
         <span class="card-expand-icon">▼</span>
       </div>
 
+      <div class="md-card" data-purpose="educacao" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Mar/25</span></div>
+        <div class="card-role" data-i18n="r-barista">Barista Course</div>
+        <div class="card-org">CBD College Pty</div>
+        <div class="card-desc" data-i18n="d-barista">Workshop on espresso preparation and coffee service. Covers coffee blends and roast profiles, espresso machine operation, milk texturing, all café-standard beverages, grind adjustment for optimal espresso, and full machine and grinder maintenance. Certified in SITHFAB025 (Prepare and Serve Espresso Coffee) and SITXFSA005 (Use Hygienic Practices for Food Safety).</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
       <div class="md-card" data-purpose="trabalho" data-location="brasil" onclick="this.classList.toggle('expanded')">
         <div class="card-top"><div class="card-badges"><span class="type-badge work" data-i18n="bw">Work</span><span class="loc-badge">🇧🇷</span></div><span class="card-date">Sep/24</span><span class="emp-badge emp-ft" data-i18n="emp-ft">Full-Time</span></div>
         <div class="card-role" data-i18n="r-pedacin">Bar Attendant</div>
@@ -1433,6 +1450,15 @@ header {
         <div class="card-org">ILSC Education Group</div>
         <div class="card-url"><a onclick="event.stopPropagation()" href="https://ilsc.com/language-schools/programs/general-english" target="_blank" rel="noopener noreferrer">ilsc.com ↗</a></div>
         <div class="card-desc" data-i18n="d-ilsc">12-week intensive programme. Started at Intermediate 2 and finished at Advanced 1. Focus on fluency, advanced vocabulary and professional communication.</div>
+        <span class="card-expand-icon">▼</span>
+      </div>
+
+      <div class="md-card" data-purpose="educacao" data-location="australia" onclick="this.classList.toggle('expanded')">
+        <div class="card-top"><div class="card-badges"><span class="type-badge study" data-i18n="bs">Study</span><span class="loc-badge">🇦🇺</span></div><span class="card-date">Oct/25</span></div>
+        <div class="card-role" data-i18n="r-cafe-work">Café Work and English</div>
+        <div class="card-org">ILSC</div>
+        <div class="card-url"><a onclick="event.stopPropagation()" href="https://www.ilsc.com/language-schools/programs/cafe-work-skills" target="_blank" rel="noopener noreferrer">ilsc.com ↗</a></div>
+        <div class="card-desc" data-i18n="d-cafe-work">Specialised English programme combining language development with practical café skills. Covers coffee service vocabulary, hands-on experience with professional equipment, barista and teamwork skills for employability, job-search language, and real-world practice serving coffee at the ILSC campus café.</div>
         <span class="card-expand-icon">▼</span>
       </div>
 
@@ -1927,8 +1953,9 @@ const translations = {
     'org-brazuca':'Brazuca Design',
     'org-carol':'Estúdio de Costura Carol Viana',
     'org-biblioverse':'BiblioVerse — Hub de Curadoria',
-    'org-design-lib':'The Design Library — BiblioVerse',
-    'org-ai-lib':'The AI Library — BiblioVerse',
+    'org-design-lib':'A Biblioteca de Design — BiblioVerse',
+    'org-ai-lib':'A Biblioteca de IA — BiblioVerse',
+    'org-lang-lib':'A Biblioteca de Aprendizado de Idiomas — BiblioVerse',
     'org-aner':'ANER — Associação Nacional de Editoras de Revistas',
     'org-ufmg':'UFMG — Universidade Federal de Minas Gerais',
     'org-ufu':'UFU — Universidade Federal de Uberlândia',
@@ -1941,6 +1968,11 @@ const translations = {
     'org-albright':'Albright Institute of Business and Language',
 
     'org-ung':'UNG — Universidade de Guarulhos',
+    'd-lang-lib':'Seleção manual dos melhores recursos para aprendizado de idiomas: aplicativos, cursos, métodos, comunidades e ferramentas para aprendizes de todos os níveis. Uma vertical temática dentro do ecossistema BiblioVerse.',
+    'r-barista':'Curso de Barista',
+    'd-barista':'Workshop de preparo de espresso e serviço em café. Conteúdo: blends e graus de torra, operação de máquina de espresso, texturização de leite, preparo de todas as bebidas do cardápio, ajuste de moagem e limpeza completa de máquina e moedor. Certificações SITHFAB025 (Preparo e Serviço de Café Espresso) e SITXFSA005 (Práticas de Higiene para Segurança Alimentar).',
+    'r-cafe-work':'Trabalho em Café e Inglês',
+    'd-cafe-work':'Programa especializado de inglês combinando desenvolvimento de idioma com habilidades práticas em café. Vocabulário de atendimento, experiência com equipamentos profissionais, habilidades de barista e trabalho em equipe para empregabilidade, inglês para busca de emprego e prática real servindo café no café do campus da ILSC.',
     'bio-p3':'Fora do trabalho, gosta de discutir ética como a maioria das pessoas fala de esportes. Também é apaixonado por divulgação científica, filosofia, existencialismo, música, cinema, esportes, games e humor.',
 
     // ── EMP BADGES ──
@@ -2097,6 +2129,7 @@ const translations = {
     'org-biblioverse':'BiblioVerse — Curation Hub',
     'org-design-lib':'The Design Library — BiblioVerse',
     'org-ai-lib':'The AI Library — BiblioVerse',
+    'org-lang-lib':'The Language Learning Library — BiblioVerse',
     'org-aner':'ANER — National Magazine Publishers Association',
     'org-ufmg':'UFMG — Federal University of Minas Gerais',
     'org-ufu':'UFU — Federal University of Uberlândia',
@@ -2109,6 +2142,11 @@ const translations = {
     'org-albright':'Albright Institute of Business and Language',
 
     'org-ung':'UNG — Universidade de Guarulhos',
+    'd-lang-lib':'Hand-curated selection of the best language learning resources: apps, courses, methods, communities and tools for learners at every level. A thematic vertical within the BiblioVerse ecosystem.',
+    'r-barista':'Barista Course',
+    'd-barista':'Workshop on espresso preparation and coffee service. Covers coffee blends and roast profiles, espresso machine operation, milk texturing, all café-standard beverages, grind adjustment for optimal espresso, and full machine and grinder maintenance. Certified in SITHFAB025 (Prepare and Serve Espresso Coffee) and SITXFSA005 (Use Hygienic Practices for Food Safety).',
+    'r-cafe-work':'Café Work and English',
+    'd-cafe-work':'Specialised English programme combining language development with practical café skills. Covers coffee service vocabulary, hands-on experience with professional equipment, barista and teamwork skills for employability, job-search language, and real-world practice serving coffee at the ILSC campus café.',
     'bio-p3':'Outside of work, he enjoys discussing ethics the way most people talk about sports. Also passionate about science communication, philosophy, existentialism, music, film, sports, games and humour.',
 
     // ── EMP BADGES ──
