@@ -579,21 +579,20 @@ header {
   text-transform: uppercase; color: var(--on-surface-var);
   margin-bottom: 10px; opacity: .7;
 }
-.projects-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.projects-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .project-chip {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  width: 110px; height: 110px;
-  border-radius: var(--r-lg);
+  display: flex; flex-direction: row;
+  align-items: center; gap: 8px;
+  height: 48px; min-width: 140px;
+  border-radius: var(--r-md);
   background: rgba(255,255,255,.78);
   backdrop-filter: blur(8px);
   border: 1px solid var(--outline-variant);
   text-decoration: none;
   color: var(--on-surface);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: .75rem; font-weight: 600;
-  text-align: center;
-  padding: 10px 8px;
+  font-size: .78rem; font-weight: 600;
+  padding: 0 14px 0 10px;
   line-height: 1.25;
   transition: box-shadow .25s, border-color .25s, transform .2s cubic-bezier(.16,1,.3,1);
 }
@@ -603,7 +602,13 @@ header {
   transform: translateY(-2px);
   color: var(--on-surface);
 }
-.project-chip-arrow { font-size: .6rem; opacity: .4; margin-top: 4px; }
+.project-chip-favicon {
+  width: 18px; height: 18px;
+  border-radius: 3px; flex-shrink: 0;
+  object-fit: contain;
+}
+.project-chip-name { flex: 1; }
+.project-chip-arrow { font-size: .6rem; opacity: .4; flex-shrink: 0; }
 
 /* Cards grid */
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(295px, 1fr)); gap: 11px; }
@@ -1720,7 +1725,7 @@ header {
       <div class="projects-accent"></div>
       <h2 class="projects-title" data-i18n="h-projects">Projetos Pessoais</h2>
     </div>
-    <p class="projects-intro" data-i18n="intro-projects">Conheça os meus projetos pessoais — sou idealizador e fundador de todos os projetos abaixo.</p>
+    <p class="projects-intro" data-i18n="intro-projects">Criações que nascem da curiosidade e das minhas paixões — em cada projeto sou o idealizador, designer e responsável por tudo, do conceito à publicação.</p>
 
     <div class="projects-group">
       <p class="projects-group-label" data-i18n="pg-digital">Digital</p>
@@ -2116,7 +2121,7 @@ const translations = {
 
     // ── PERSONAL PROJECTS ──
     'h-projects':'Projetos Pessoais',
-    'intro-projects':'Conheça os meus projetos pessoais — sou idealizador e fundador de todos os projetos abaixo.',
+    'intro-projects':'Criações que nascem da curiosidade e das minhas paixões — em cada projeto sou o idealizador, designer e responsável por tudo, do conceito à publicação.',
     'pg-digital':'Digital',
     'pg-print':'Impresso',
 
@@ -2296,7 +2301,7 @@ const translations = {
 
     // ── PERSONAL PROJECTS ──
     'h-projects':'Personal Projects',
-    'intro-projects':'Discover my personal projects — I am the founder and creative force behind every one of them.',
+    'intro-projects':'Creations born from curiosity and passion — in each project I am the ideator, designer, and responsible for everything, from concept to launch.',
     'pg-digital':'Digital',
     'pg-print':'Print',
 
@@ -2329,6 +2334,22 @@ function setLang(lang, save = true) {
   setLang(nav.toLowerCase().startsWith('pt') ? 'pt' : 'en', true);
 })();
 
+// ── PROJECT CHIP FAVICONS ──
+(function() {
+  document.querySelectorAll('.project-chip[href]').forEach(function(chip) {
+    try {
+      var domain = new URL(chip.href).hostname;
+      var img = document.createElement('img');
+      img.className = 'project-chip-favicon';
+      img.src = 'https://www.google.com/s2/favicons?domain=' + domain + '&sz=32';
+      img.alt = '';
+      img.width = 18;
+      img.height = 18;
+      img.onerror = function() { this.style.display = 'none'; };
+      chip.insertBefore(img, chip.firstChild);
+    } catch(e) {}
+  });
+})();
 
 // ── NAME SCRAMBLE ANIMATION ──
 (function() {
